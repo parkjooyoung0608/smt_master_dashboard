@@ -7,8 +7,18 @@ const GroupWideOperationStatus = () => {
   return (
     <MarginBottom>
       <BoxContainer>
-        <Title title="전체 그룹 현황" />
-        GroupWideOperationStatus
+        <Title title="그룹 전체 운용 현황" />
+        <p>등록 : 61</p>
+        <div>
+          <div>
+            <h3>접속</h3>
+            <span>4</span>
+          </div>
+          <div>
+            <h3>만료</h3>
+            <span>1</span>
+          </div>
+        </div>
       </BoxContainer>
     </MarginBottom>
   );

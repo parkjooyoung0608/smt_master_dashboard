@@ -1,10 +1,10 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const BoxContainer = ({ children }) => {
-  const StatusByGroup = children.includes("StatusByGroup");
+  //const componentCheck = children.includes();
 
-  return <Container StatusByGroup={StatusByGroup}>{children}</Container>;
+  return <Container>{children}</Container>;
 };
 
 export default BoxContainer;
@@ -15,11 +15,4 @@ const Container = styled.section`
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   flex: 1;
-  ${props =>
-    props.StatusByGroup &&
-    css`
-      flex-direction: column;
-      flex: ;
-      height: 100vh;
-    `}
 `;

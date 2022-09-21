@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import useWindowSize from "./hooks/useWindowSize";
 import AllDataProtectionStatus from "./pages/AllDataProtectionStatus";
 import GroupWideOperationStatus from "./pages/GroupWideOperationStatus";
-import StatusByGroup from "./pages/ StatusByGroup";
+import StatusByGroup from "./pages/StatusByGroup";
 import RealTimeDataProtectionStatus from "./pages/RealTimeDataProtectionStatus";
 import ServerCapacity from "./pages/ServerCapacity";
 import DashBoardContainer from "./component/DashBoardContainer";
