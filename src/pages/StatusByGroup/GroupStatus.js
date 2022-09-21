@@ -10,17 +10,15 @@ const GroupStatus = () => {
   return (
     <Container>
       <Table>
-        {/* 
-        TODO : 테이블 비율 설정하기
         <colgroup>
-          <col style="width:10%" />
-          <col style="width:10%" />
-          <col style="width:10%" />
-          <col style="width:10%" />
-          <col style="width:10%" />
-          <col style="width:10%" />
-          <col style="width:10%" />
-        </colgroup> */}
+          <col style={{ width: 10 + "%" }} />
+          <col style={{ width: 10 + "%" }} />
+          <col style={{ width: 25 + "%" }} />
+          <col style={{ width: 10 + "%" }} />
+          <col style={{ width: 10 + "%" }} />
+          <col style={{ width: 30 + "%" }} />
+          <col style={{ width: 5 + "%" }} />
+        </colgroup>
         <Thead>
           <Tr>
             <Th>그룹</Th>
@@ -34,7 +32,9 @@ const GroupStatus = () => {
         </Thead>
         <tbody>
           <Tr>
-            <GroupName>박주영</GroupName>
+            <Td>
+              <GroupName>박주영</GroupName>
+            </Td>
             <Td>
               <ExpiryPeriod />
             </Td>
@@ -56,7 +56,9 @@ const GroupStatus = () => {
           </Tr>
 
           <Tr>
-            <GroupName>박주영</GroupName>
+            <Td>
+              <GroupName>박주영</GroupName>
+            </Td>
             <Td>
               <ExpiryPeriod />
             </Td>
@@ -78,7 +80,9 @@ const GroupStatus = () => {
           </Tr>
 
           <Tr>
-            <GroupName>박주영</GroupName>
+            <Td>
+              <GroupName>박주영</GroupName>
+            </Td>
             <Td>
               <ExpiryPeriod />
             </Td>
@@ -100,7 +104,9 @@ const GroupStatus = () => {
           </Tr>
 
           <Tr>
-            <GroupName>박주영</GroupName>
+            <Td>
+              <GroupName>박주영</GroupName>
+            </Td>
             <Td>
               <ExpiryPeriod />
             </Td>
@@ -122,7 +128,9 @@ const GroupStatus = () => {
           </Tr>
 
           <Tr>
-            <GroupName>박주영</GroupName>
+            <Td>
+              <GroupName>박주영</GroupName>
+            </Td>
             <Td>
               <ExpiryPeriod />
             </Td>
@@ -144,7 +152,9 @@ const GroupStatus = () => {
           </Tr>
 
           <Tr>
-            <GroupName>박주영</GroupName>
+            <Td>
+              <GroupName>박주영</GroupName>
+            </Td>
             <Td>
               <ExpiryPeriod />
             </Td>
@@ -172,10 +182,7 @@ const GroupStatus = () => {
 
 export default GroupStatus;
 
-const Container = styled.div`
-  /* width: 100%;
-  max-height: 100%; */
-`;
+const Container = styled.div``;
 
 const Table = styled.table`
   width: 100%;
@@ -201,17 +208,29 @@ const Th = styled.th`
 `;
 
 const Td = styled.td`
+  position: relative;
+
   padding: 10px;
   text-align: center;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const GroupName = styled.td`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   text-align: center;
   font-weight: bold;
 `;
 
 const SituationIcon = styled.div`
-  color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 10%;
 `;

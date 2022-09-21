@@ -10,7 +10,7 @@ const ProtectionStatusGroup = () => {
         <div>1</div>
         <div>1</div>
       </BarChartContainer>
-      <div>
+      <DescContainer>
         <FlexBox>
           <Circle color="#FF0000" />
           <span>접근 종료</span>
@@ -27,7 +27,7 @@ const ProtectionStatusGroup = () => {
           <Circle color="#FF3C00" />
           <span>DLL 인젝션</span>
         </FlexBox>
-      </div>
+      </DescContainer>
     </DisplayFlex>
   );
 };
@@ -48,10 +48,14 @@ const FlexBox = styled.div`
 
 const BarChartContainer = styled.div`
   display: flex;
-  width: 300px;
+  width: 65%;
   height: 60px;
   line-height: 60px;
   margin-right: 30px;
+`;
+
+const DescContainer = styled.div`
+  width: 35%;
 `;
 
 const Circle = styled.div`

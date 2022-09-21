@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const PolicyChangeStatus = () => {
   return (
-    <div>
+    <Container>
       <FlexBox>
         <DisplayFlex>
           <Circle color="#111735" />
@@ -32,17 +32,24 @@ const PolicyChangeStatus = () => {
         </DisplayFlex>
         <span>0</span>
       </FlexBox>
-    </div>
+    </Container>
   );
 };
 
 export default PolicyChangeStatus;
 
+const Container = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 10%;
+`;
+
 const FlexBox = styled.div`
   display: flex;
   justify-content: space-between;
-  text-align: center;
-  line-height: 20px;
 `;
 
 const DisplayFlex = styled.div`

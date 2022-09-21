@@ -7,47 +7,59 @@ const OperationStatus = () => {
   const 만료개수 = 2;
 
   return (
-    <FlexBox>
-      <BarChartContainer>
-        <ExpirationCount>{만료개수}</ExpirationCount>
-        <ConnectCount>{접속개수}</ConnectCount>
-        <RegistrationCount>{등록개수}</RegistrationCount>
-      </BarChartContainer>
-      <div>
-        <FlexBox>
-          <Circle color="#1c7fff" />
-          <Span>접속</Span>
-        </FlexBox>
-        <MarginBottom />
-        <FlexBox>
-          <Circle color="#f85353" />
-          <Span>만료</Span>
-        </FlexBox>
-        <MarginBottom />
-        <FlexBox>
-          <Circle color="#e1e1e1" />
-          <Span>등록</Span>
-        </FlexBox>
-      </div>
-    </FlexBox>
+    <Container>
+      <FlexBox>
+        <BarChartContainer>
+          <ExpirationCount>{만료개수}</ExpirationCount>
+          <ConnectCount>{접속개수}</ConnectCount>
+          <RegistrationCount>{등록개수}</RegistrationCount>
+        </BarChartContainer>
+        <div>
+          <FlexBox>
+            <Circle color="#1c7fff" />
+            <Span>접속</Span>
+          </FlexBox>
+          <MarginBottom />
+          <FlexBox>
+            <Circle color="#f85353" />
+            <Span>만료</Span>
+          </FlexBox>
+          <MarginBottom />
+          <FlexBox>
+            <Circle color="#e1e1e1" />
+            <Span>등록</Span>
+          </FlexBox>
+        </div>
+      </FlexBox>
+    </Container>
   );
 };
 
 export default OperationStatus;
 
+const Container = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+`;
+
 const FlexBox = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
   line-height: 20px;
 `;
 
 const BarChartContainer = styled.div`
   display: flex;
-  width: 300px;
+  align-content: center;
+  width: 70%;
   height: 60px;
-  line-height: 60px;
   margin-right: 30px;
+  line-height: 60px;
 `;
 
 const ExpirationCount = styled.div`
