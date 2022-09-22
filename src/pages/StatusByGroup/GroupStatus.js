@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import ExpiryPeriod from "./ExpiryPeriod";
 import OperationStatus from "./OperationStatus";
 import PolicyChangeStatus from "./PolicyChangeStatus";
 import ProtectionStatusGroup from "./ProtectionStatusGroup";
 import SecurityUpdate from "./SecurityUpdate";
 import Pagination from "./Pagination";
+import styled from "styled-components";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
 const GroupStatus = () => {
   const [allGroupData, setAllGroupData] = useState("");
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
+  const [pageShow, setPageShow] = useState(10);
+  const [toggle, setToggle] = useState(false);
   const offset = (page - 1) * limit;
 
   useEffect(() => {
@@ -20,6 +23,18 @@ const GroupStatus = () => {
         setAllGroupData(data.data.searchedList);
       });
   }, []);
+
+  const option = e => {
+    setPageShow(e.target.value);
+  };
+
+  useEffect(() => {
+    setLimit(pageShow);
+  }, [pageShow]);
+
+  const onShowDropbox = () => {
+    setToggle(!toggle);
+  };
 
   return (
     <Container>
@@ -78,20 +93,33 @@ const GroupStatus = () => {
           ))}
       </Table>
 
-      <label>
-        페이지 당 표시할 게시물 수:&nbsp;
-        <select
-          type="number"
-          value={limit}
-          onChange={({ target: { value } }) => setLimit(Number(value))}
-        >
-          <option value="10">10</option>
-          <option value="12">12</option>
-          <option value="20">20</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
-      </label>
+      <Label>
+        <Title>표시할 게시물 수 :</Title>
+        <SelectContainer>
+          <SelectTitle onClick={onShowDropbox}>
+            <SelectNum>{pageShow}</SelectNum>
+            {toggle ? (
+              <IoMdArrowDropup color="#a8a8a8" />
+            ) : (
+              <IoMdArrowDropdown color="#a8a8a8" />
+            )}
+          </SelectTitle>
+          <Select>
+            <Option onClick={option} value="10">
+              10
+            </Option>
+            <Option onClick={option} value="20">
+              20
+            </Option>
+            <Option onClick={option} value="50">
+              50
+            </Option>
+            <Option onClick={option} value="100">
+              100
+            </Option>
+          </Select>
+        </SelectContainer>
+      </Label>
 
       <Pagination
         total={allGroupData.length}
@@ -156,4 +184,45 @@ const SituationIcon = styled.div`
   transform: translate(-50%, -50%);
   width: 100%;
   padding: 10%;
+`;
+
+const Label = styled.label`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+const Title = styled.p`
+  margin-right: 10px;
+`;
+
+const SelectContainer = styled.div`
+  position: relative;
+`;
+
+const SelectTitle = styled.span`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80px;
+  padding: 5px 15px;
+  border: 1px solid #a8a8a8;
+  background-color: #ffffff;
+  border-radius: 5px;
+`;
+
+const SelectNum = styled.div``;
+
+const Select = styled.ul`
+  position: absolute;
+  top: 40px;
+  left: -10px;
+  width: 80px;
+  border: 1px solid #f4f4f4;
+  padding: 10px;
+  margin-left: 10px;
+`;
+
+const Option = styled.li`
+  text-align: center;
 `;
