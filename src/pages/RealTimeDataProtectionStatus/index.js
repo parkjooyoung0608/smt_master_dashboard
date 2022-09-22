@@ -35,6 +35,7 @@ const RealTimeDataProtectionStatus = () => {
   return (
     <BoxContainer>
       <Title title="실시간 데이터 보호 현황" />
+      <MarginBottom />
       <Table>
         <Thead>
           <Tr>
@@ -98,4 +99,8 @@ const Th = styled.th`
 const Td = styled.td`
   padding: 10px 0;
   text-align: center;
+`;
+
+const MarginBottom = styled.div`
+  margin-bottom: 10px;
 `;

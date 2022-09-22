@@ -10,4 +10,5 @@ export default Title;
 const SectionTitle = styled.h2`
   font-size: 20px;
   font-weight: bold;
+  white-space: nowrap;
 `;

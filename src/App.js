@@ -47,10 +47,10 @@ function App() {
       <GlobalStyle />
       <DashBoardContainer>
         <FlexContainer ref={targetRef}>
-          <MarginRight>
+          <FirstSection>
             <GroupWideOperationStatus />
             <ServerCapacity />
-          </MarginRight>
+          </FirstSection>
           <AllDataProtectionStatus />
           <MarginRight />
           <RealTimeDataProtectionStatus />
@@ -66,6 +66,12 @@ export default App;
 const FlexContainer = styled.div`
   display: flex;
   margin-bottom: 10px;
+  height: 37%;
+`;
+
+const FirstSection = styled.div`
+  margin-right: 10px;
+  width: 20%;
 `;
 
 const MarginRight = styled.div`

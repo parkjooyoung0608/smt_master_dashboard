@@ -191,6 +191,7 @@ const Table = styled.table`
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
   border-collapse: collapse;
   border-radius: 5px;
+  overflow: hidden;
 `;
 
 const Thead = styled.thead`
