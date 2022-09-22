@@ -10,9 +10,15 @@ const OperationStatus = ({
     <Container>
       <FlexBox>
         <BarChartContainer>
-          <ExpirationCount>{expiredLicenseCnt}</ExpirationCount>
-          <ConnectCount>{connectedClientCnt}</ConnectCount>
-          <RegistrationCount>{usedLicenseCnt}</RegistrationCount>
+          <ExpirationCount percent={expiredLicenseCnt}>
+            {expiredLicenseCnt}
+          </ExpirationCount>
+          <ConnectCount percent={connectedClientCnt}>
+            {connectedClientCnt}
+          </ConnectCount>
+          <RegistrationCount percent={usedLicenseCnt}>
+            {usedLicenseCnt}
+          </RegistrationCount>
         </BarChartContainer>
         <div>
           <FlexBox>
@@ -60,22 +66,23 @@ const BarChartContainer = styled.div`
   height: 60px;
   margin-right: 30px;
   line-height: 60px;
+  border: 1px solid #000;
 `;
 
 const ExpirationCount = styled.div`
-  width: 20px;
+  width: ${props => props.percent}%;
   height: 100%;
   color: #fff;
   background-color: #f85353;
 `;
 const ConnectCount = styled.div`
-  width: 20px;
+  width: ${props => props.percent}%;
   height: 100%;
   color: #fff;
   background-color: #1c7fff;
 `;
 const RegistrationCount = styled.div`
-  width: 100%;
+  width: ${props => props.percent}%;
   height: 100%;
   color: #fff;
   background-color: #e1e1e1;

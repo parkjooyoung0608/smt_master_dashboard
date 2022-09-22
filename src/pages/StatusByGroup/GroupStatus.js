@@ -7,6 +7,7 @@ import SecurityUpdate from "./SecurityUpdate";
 import Pagination from "./Pagination";
 import styled, { css } from "styled-components";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import CustomizedSwitches from "../../component/onOffBtn";
 
 const GroupStatus = () => {
   const [allGroupData, setAllGroupData] = useState("");
@@ -120,7 +121,9 @@ const GroupStatus = () => {
                   <ProtectionStatusGroup />
                 </Td>
                 <Td>
-                  <SituationIcon>icon</SituationIcon>
+                  <SituationIcon>
+                    <CustomizedSwitches />
+                  </SituationIcon>
                 </Td>
               </Tr>
             </tbody>
