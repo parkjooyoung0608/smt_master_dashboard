@@ -2,7 +2,6 @@ import React from "react";
 import Title from "../../component/Title";
 import styled, { css } from "styled-components";
 import GroupStatus from "./GroupStatus";
-import Pagination from "./Pagination";
 
 const StatusByGroup = ({ getHeight }) => {
   return (
@@ -19,7 +18,6 @@ const StatusByGroup = ({ getHeight }) => {
       </Header>
       <MarginTop />
       <GroupStatus />
-      <Pagination />
     </Container>
   );
 };

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const ExpiryPeriod = () => {
+const ExpiryPeriod = ({ operateEndDate }) => {
   return (
     <Container>
       <Title>49일 지남</Title>
-      <Period>~2022.08.01</Period>
+      <Period>~{operateEndDate}</Period>
     </Container>
   );
 };

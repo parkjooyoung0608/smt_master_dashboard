@@ -46,26 +46,26 @@ const RealTimeDataProtectionStatus = () => {
             <Th align="center">접속 IP</Th>
           </Tr>
         </Thead>
-        <tbody>
-          {PROTECTIONDATA.map(
-            ({
-              id,
-              group,
-              occurrenceTime,
-              registrationTime,
-              clientIp,
-              connectIp,
-            }) => (
-              <Tr key={id}>
+        {PROTECTIONDATA.map(
+          ({
+            id,
+            group,
+            occurrenceTime,
+            registrationTime,
+            clientIp,
+            connectIp,
+          }) => (
+            <tbody key={id}>
+              <Tr>
                 <Td>{group}</Td>
                 <Td>{occurrenceTime}</Td>
                 <Td>{registrationTime}</Td>
                 <Td>{clientIp}</Td>
                 <Td>{connectIp}</Td>
               </Tr>
-            )
-          )}
-        </tbody>
+            </tbody>
+          )
+        )}
       </Table>
     </BoxContainer>
   );

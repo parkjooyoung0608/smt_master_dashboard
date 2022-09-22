@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ExpiryPeriod from "./ExpiryPeriod";
 import OperationStatus from "./OperationStatus";
 import PolicyChangeStatus from "./PolicyChangeStatus";
 import ProtectionStatusGroup from "./ProtectionStatusGroup";
 import SecurityUpdate from "./SecurityUpdate";
+import Pagination from "./Pagination";
 
 const GroupStatus = () => {
+  const [allGroupData, setAllGroupData] = useState("");
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
+
+  useEffect(() => {
+    fetch("data/allGroup.json", { method: "GET" })
+      .then(res => res.json())
+      .then(data => {
+        setAllGroupData(data.data.searchedList);
+      });
+  }, []);
+
   return (
     <Container>
       <Table>
@@ -30,152 +44,61 @@ const GroupStatus = () => {
             <Th>상태</Th>
           </Tr>
         </Thead>
-        <tbody>
-          <Tr>
-            <Td>
-              <GroupName>박주영</GroupName>
-            </Td>
-            <Td>
-              <ExpiryPeriod />
-            </Td>
-            <Td>
-              <OperationStatus />
-            </Td>
-            <Td>
-              <PolicyChangeStatus />
-            </Td>
-            <Td>
-              <SecurityUpdate />
-            </Td>
-            <Td>
-              <ProtectionStatusGroup />
-            </Td>
-            <Td>
-              <SituationIcon>icon</SituationIcon>
-            </Td>
-          </Tr>
-
-          <Tr>
-            <Td>
-              <GroupName>박주영</GroupName>
-            </Td>
-            <Td>
-              <ExpiryPeriod />
-            </Td>
-            <Td>
-              <OperationStatus />
-            </Td>
-            <Td>
-              <PolicyChangeStatus />
-            </Td>
-            <Td>
-              <SecurityUpdate />
-            </Td>
-            <Td>
-              <ProtectionStatusGroup />
-            </Td>
-            <Td>
-              <SituationIcon>icon</SituationIcon>
-            </Td>
-          </Tr>
-
-          <Tr>
-            <Td>
-              <GroupName>박주영</GroupName>
-            </Td>
-            <Td>
-              <ExpiryPeriod />
-            </Td>
-            <Td>
-              <OperationStatus />
-            </Td>
-            <Td>
-              <PolicyChangeStatus />
-            </Td>
-            <Td>
-              <SecurityUpdate />
-            </Td>
-            <Td>
-              <ProtectionStatusGroup />
-            </Td>
-            <Td>
-              <SituationIcon>icon</SituationIcon>
-            </Td>
-          </Tr>
-
-          <Tr>
-            <Td>
-              <GroupName>박주영</GroupName>
-            </Td>
-            <Td>
-              <ExpiryPeriod />
-            </Td>
-            <Td>
-              <OperationStatus />
-            </Td>
-            <Td>
-              <PolicyChangeStatus />
-            </Td>
-            <Td>
-              <SecurityUpdate />
-            </Td>
-            <Td>
-              <ProtectionStatusGroup />
-            </Td>
-            <Td>
-              <SituationIcon>icon</SituationIcon>
-            </Td>
-          </Tr>
-
-          <Tr>
-            <Td>
-              <GroupName>박주영</GroupName>
-            </Td>
-            <Td>
-              <ExpiryPeriod />
-            </Td>
-            <Td>
-              <OperationStatus />
-            </Td>
-            <Td>
-              <PolicyChangeStatus />
-            </Td>
-            <Td>
-              <SecurityUpdate />
-            </Td>
-            <Td>
-              <ProtectionStatusGroup />
-            </Td>
-            <Td>
-              <SituationIcon>icon</SituationIcon>
-            </Td>
-          </Tr>
-
-          <Tr>
-            <Td>
-              <GroupName>박주영</GroupName>
-            </Td>
-            <Td>
-              <ExpiryPeriod />
-            </Td>
-            <Td>
-              <OperationStatus />
-            </Td>
-            <Td>
-              <PolicyChangeStatus />
-            </Td>
-            <Td>
-              <SecurityUpdate />
-            </Td>
-            <Td>
-              <ProtectionStatusGroup />
-            </Td>
-            <Td>
-              <SituationIcon>icon</SituationIcon>
-            </Td>
-          </Tr>
-        </tbody>
+        {allGroupData &&
+          allGroupData.slice(offset, offset + limit).map(props => (
+            <tbody key={props.groupIdx}>
+              <Tr>
+                <Td>
+                  <GroupName>{props.groupName}</GroupName>
+                </Td>
+                <Td>
+                  <ExpiryPeriod operateEndDate={props.operateEndDate} />
+                </Td>
+                <Td>
+                  <OperationStatus
+                    usedLicenseCnt={props.usedLicenseCnt}
+                    connectedClientCnt={props.connectedClientCnt}
+                    expiredLicenseCnt={props.expiredLicenseCnt}
+                  />
+                </Td>
+                <Td>
+                  <PolicyChangeStatus />
+                </Td>
+                <Td>
+                  <SecurityUpdate />
+                </Td>
+                <Td>
+                  <ProtectionStatusGroup />
+                </Td>
+                <Td>
+                  <SituationIcon>icon</SituationIcon>
+                </Td>
+              </Tr>
+            </tbody>
+          ))}
       </Table>
+
+      <label>
+        페이지 당 표시할 게시물 수:&nbsp;
+        <select
+          type="number"
+          value={limit}
+          onChange={({ target: { value } }) => setLimit(Number(value))}
+        >
+          <option value="10">10</option>
+          <option value="12">12</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </label>
+
+      <Pagination
+        total={allGroupData.length}
+        limit={limit}
+        page={page}
+        setPage={setPage}
+      />
     </Container>
   );
 };
@@ -210,7 +133,6 @@ const Th = styled.th`
 
 const Td = styled.td`
   position: relative;
-
   padding: 10px;
   text-align: center;
   border-right: 1px solid rgba(0, 0, 0, 0.1);

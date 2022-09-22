@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-const OperationStatus = () => {
-  const 등록개수 = 22;
-  const 접속개수 = 10;
-  const 만료개수 = 2;
-
+const OperationStatus = ({
+  usedLicenseCnt,
+  connectedClientCnt,
+  expiredLicenseCnt,
+}) => {
   return (
     <Container>
       <FlexBox>
         <BarChartContainer>
-          <ExpirationCount>{만료개수}</ExpirationCount>
-          <ConnectCount>{접속개수}</ConnectCount>
-          <RegistrationCount>{등록개수}</RegistrationCount>
+          <ExpirationCount>{expiredLicenseCnt}</ExpirationCount>
+          <ConnectCount>{connectedClientCnt}</ConnectCount>
+          <RegistrationCount>{usedLicenseCnt}</RegistrationCount>
         </BarChartContainer>
         <div>
           <FlexBox>
