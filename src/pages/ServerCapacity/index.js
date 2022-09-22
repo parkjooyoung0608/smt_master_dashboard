@@ -40,7 +40,7 @@ const Container = styled.div`
   background-color: #fff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  height: calc(50% - 6px);
+  height: 46%;
 `;
 
 const FlexBox = styled.div`
@@ -55,8 +55,8 @@ const SubTitle = styled.div`
 
 const ChartSkills = styled.ul`
   position: relative;
-  width: 180px;
-  height: 90px;
+  width: 11.25rem;
+  height: 5.625rem;
   margin: 0 auto;
   padding: 0;
   list-style-type: none;
@@ -66,7 +66,7 @@ const ChartSkills = styled.ul`
     content: "";
     width: inherit;
     height: inherit;
-    border: 45px solid rgba(211, 211, 211, 0.3);
+    border: 2.688rem solid rgba(211, 211, 211, 0.3);
     border-bottom: none;
     border-top-left-radius: 175px;
     border-top-right-radius: 175px;
@@ -79,7 +79,7 @@ const ChartSkillsContent = styled.li`
   left: 0;
   width: inherit;
   height: inherit;
-  border: 45px solid;
+  border: 2.688rem solid;
   border-top: none;
   border-bottom-left-radius: 175px;
   border-bottom-right-radius: 175px;

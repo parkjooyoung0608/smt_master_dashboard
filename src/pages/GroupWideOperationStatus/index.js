@@ -34,7 +34,6 @@ const Container = styled.section`
   background-color: #fff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  height: 50%;
 `;
 
 const FlexBox = styled.div`
@@ -48,9 +47,9 @@ const Card = styled.div`
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 80px;
-  color: #fff;
+  padding: 10px;
   text-align: center;
+  color: #fff;
   border-radius: 5px;
   background-color: ${props => props.bgColor};
 `;
@@ -64,7 +63,7 @@ const Span = styled.span`
 `;
 
 const MarginBottom = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 `;
 const MarginRight = styled.div`
   margin-right: 10px;
