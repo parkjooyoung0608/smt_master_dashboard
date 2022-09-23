@@ -10,15 +10,21 @@ const OperationStatus = ({
     <Container>
       <FlexBox>
         <BarChartContainer>
-          <ExpirationCount percent={expiredLicenseCnt}>
-            {expiredLicenseCnt}
-          </ExpirationCount>
-          <ConnectCount percent={connectedClientCnt}>
-            {connectedClientCnt}
-          </ConnectCount>
-          <RegistrationCount percent={usedLicenseCnt}>
-            {usedLicenseCnt}
-          </RegistrationCount>
+          {!(expiredLicenseCnt || connectedClientCnt || usedLicenseCnt) ? (
+            <P>데이터가 없습니다.</P>
+          ) : (
+            <>
+              <ExpirationCount percent={expiredLicenseCnt}>
+                {expiredLicenseCnt}
+              </ExpirationCount>
+              <ConnectCount percent={connectedClientCnt}>
+                {connectedClientCnt}
+              </ConnectCount>
+              <RegistrationCount percent={usedLicenseCnt}>
+                {usedLicenseCnt}
+              </RegistrationCount>
+            </>
+          )}
         </BarChartContainer>
         <div>
           <FlexBox>
@@ -94,6 +100,13 @@ const Circle = styled.div`
   height: 14px;
   border-radius: 75px;
   background-color: ${props => props.color};
+`;
+
+const P = styled.p`
+  width: 100%;
+  color: #9e9b9b;
+  font-weight: bold;
+  text-align: center;
 `;
 
 const Span = styled.span`

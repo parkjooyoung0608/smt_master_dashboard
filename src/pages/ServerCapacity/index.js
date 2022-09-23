@@ -40,7 +40,7 @@ const Container = styled.div`
   background-color: #fff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  height: 46%;
+  height: calc(50% - 10px);
 `;
 
 const FlexBox = styled.div`
