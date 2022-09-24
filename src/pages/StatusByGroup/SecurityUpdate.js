@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const SecurityUpdate = () => {
+const SecurityUpdate = ({ noVerifiedSecUpdateCnt }) => {
   return (
     <Container>
       <FlexBox>
-        icon
-        <span>업데이트 필요</span>
-        <span>14</span>
+        <PcCount>{noVerifiedSecUpdateCnt}</PcCount>
+        <P>업데이트 필요 PC</P>
       </FlexBox>
     </Container>
   );
@@ -26,7 +25,18 @@ const Container = styled.div`
 
 const FlexBox = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   text-align: center;
   line-height: 20px;
+`;
+
+const PcCount = styled.p`
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: bold;
+`;
+
+const P = styled.p`
+  font-size: 14px;
 `;

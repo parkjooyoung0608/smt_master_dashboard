@@ -115,7 +115,9 @@ const GroupStatus = () => {
                   <PolicyChangeStatus />
                 </Td>
                 <Td>
-                  <SecurityUpdate />
+                  <SecurityUpdate
+                    noVerifiedSecUpdateCnt={props.noVerifiedSecUpdateCnt}
+                  />
                 </Td>
                 <Td>
                   <ProtectionStatusGroup />
