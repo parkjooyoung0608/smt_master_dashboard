@@ -1,67 +1,67 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const ProtectionStatusGroup = () => {
+const ProtectionStatusGroup = ({
+  accessBlockCnt,
+  accessExitCnt,
+  accessTimeoutCnt,
+  dllInjectionCnt,
+}) => {
   return (
-    <DisplayFlex>
-      <BarChartContainer>
-        <div>5</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-      </BarChartContainer>
-      <DescContainer>
-        <FlexBox>
-          <Circle color="#FF0000" />
-          <span>접근 종료</span>
-        </FlexBox>
-        <FlexBox>
-          <Circle color="#FFB300" />
-          <span>접근 차단</span>
-        </FlexBox>
-        <FlexBox>
-          <Circle color="#FF3C00" />
-          <span>접근 타임 아웃</span>
-        </FlexBox>
-        <FlexBox>
-          <Circle color="#FF3C00" />
-          <span>DLL 인젝션</span>
-        </FlexBox>
-      </DescContainer>
-    </DisplayFlex>
+    <FlexBox>
+      <FlexColumnCneter>
+        <Circle color="#9B210F">{accessBlockCnt}</Circle>
+        <span>접근 종료</span>
+      </FlexColumnCneter>
+      <FlexColumnCneter>
+        <Circle color="#C41822">{accessExitCnt}</Circle>
+        <span>접근 차단</span>
+      </FlexColumnCneter>
+      <FlexColumnCneter>
+        <Circle color="#F52330">{accessTimeoutCnt}</Circle>
+        <span>접근 타임 아웃</span>
+      </FlexColumnCneter>
+      <FlexColumnCneter marginNone={true}>
+        <Circle color="#F66C63">{dllInjectionCnt}</Circle>
+        <span>DLL 인젝션</span>
+      </FlexColumnCneter>
+    </FlexBox>
   );
 };
 
 export default ProtectionStatusGroup;
 
-const DisplayFlex = styled.div`
+const FlexColumnCneter = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  width: 90px;
+  margin-right: 20px;
+  align-items: center;
+
+  ${props =>
+    props.marginNone &&
+    css`
+      margin-right: 0;
+    `}
 `;
 
 const FlexBox = styled.div`
   display: flex;
-  justify-content: start;
+  justify-content: center;
   text-align: center;
   line-height: 20px;
 `;
 
-const BarChartContainer = styled.div`
-  display: flex;
-  width: 65%;
+const Circle = styled.div`
+  width: 80px;
   height: 60px;
   line-height: 60px;
-  margin-right: 30px;
-`;
-
-const DescContainer = styled.div`
-  width: 35%;
-`;
-
-const Circle = styled.div`
-  margin-right: 20px;
-  width: 14px;
-  height: 14px;
-  border-radius: 75px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
   background-color: ${props => props.color};
 `;

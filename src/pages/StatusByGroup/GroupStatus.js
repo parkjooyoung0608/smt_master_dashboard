@@ -120,7 +120,12 @@ const GroupStatus = () => {
                   />
                 </Td>
                 <Td>
-                  <ProtectionStatusGroup />
+                  <ProtectionStatusGroup
+                    accessBlockCnt={props.fileProtectLogCnt.accessBlockCnt}
+                    accessExitCnt={props.fileProtectLogCnt.accessExitCnt}
+                    accessTimeoutCnt={props.fileProtectLogCnt.accessTimeoutCnt}
+                    dllInjectionCnt={props.fileProtectLogCnt.dllInjectionCnt}
+                  />
                 </Td>
                 <Td>
                   <SituationIcon>
@@ -178,6 +183,7 @@ const Th = styled.th`
 
 const Td = styled.td`
   position: relative;
+  height: 100px;
   padding: 10px;
   text-align: center;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
