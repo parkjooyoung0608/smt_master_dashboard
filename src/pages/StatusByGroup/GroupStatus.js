@@ -129,7 +129,7 @@ const GroupStatus = () => {
                 </Td>
                 <Td>
                   <SituationIcon>
-                    <CustomizedSwitches />
+                    <CustomizedSwitches isActive={props.isActive} />
                   </SituationIcon>
                 </Td>
               </Tr>
@@ -195,7 +195,6 @@ const GroupName = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  /* border-right: 1px solid rgba(0, 0, 0, 0.1); */
   text-align: center;
   font-weight: bold;
 `;
@@ -205,8 +204,6 @@ const SituationIcon = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  padding: 10%;
 `;
 
 const Label = styled.label`

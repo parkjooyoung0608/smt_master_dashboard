@@ -55,10 +55,14 @@ const IOSSwitch = styled(props => (
   },
 }));
 
-export default function CustomizedSwitches() {
+export default function CustomizedSwitches({ isActive }) {
   return (
     <FormGroup>
-      <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
+      {/* TODO : 클릭시 isActive의 상태 Toggle 로직 구현 */}
+      <FormControlLabel
+        style={{ margin: 0 }}
+        control={<IOSSwitch sx={{ m: 1 }} checked={isActive === "Y" && true} />}
+      />
     </FormGroup>
   );
 }

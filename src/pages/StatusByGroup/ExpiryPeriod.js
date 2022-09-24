@@ -14,8 +14,6 @@ const ExpiryPeriod = ({ operateEndDate }) => {
     }
   };
 
-  console.log(getDateDiff());
-
   return (
     <Container>
       {diffDate > 0 ? (
