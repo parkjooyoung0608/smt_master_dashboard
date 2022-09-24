@@ -66,7 +66,7 @@ const BarChartContainer = styled.div`
   height: 60px;
   margin-right: 30px;
   line-height: 60px;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 `;
 
 const ExpirationCount = styled.div`
