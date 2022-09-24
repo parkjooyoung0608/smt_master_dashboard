@@ -28,15 +28,15 @@ const FlexBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  line-height: 20px;
+  line-height: 1.25rem;
 `;
 
 const PcCount = styled.p`
-  margin-bottom: 10px;
-  font-size: 25px;
+  margin-bottom: 0.625rem;
+  font-size: 1.563rem;
   font-weight: bold;
 `;
 
 const P = styled.p`
-  font-size: 14px;
+  font-size: 0.875rem;
 `;

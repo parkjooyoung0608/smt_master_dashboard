@@ -62,17 +62,16 @@ const FlexBox = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  line-height: 20px;
+  line-height: 1.25rem;
 `;
 
 const BarChartContainer = styled.div`
   display: flex;
   align-content: center;
   width: 70%;
-  height: 60px;
-  margin-right: 30px;
-  line-height: 60px;
-  /* border: 1px solid #000; */
+  height: 3.75rem;
+  margin-right: 1.875rem;
+  line-height: 3.75rem;
 `;
 
 const ExpirationCount = styled.div`
@@ -95,10 +94,10 @@ const RegistrationCount = styled.div`
 `;
 
 const Circle = styled.div`
-  margin-right: 20px;
-  width: 14px;
-  height: 14px;
-  border-radius: 75px;
+  margin-right: 1.25rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 4.688rem;
   background-color: ${props => props.color};
 `;
 
@@ -114,5 +113,5 @@ const Span = styled.span`
 `;
 
 const MarginBottom = styled.div`
-  margin-bottom: 5px;
+  margin-bottom: 0.313rem;
 `;

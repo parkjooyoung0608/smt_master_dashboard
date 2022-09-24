@@ -36,11 +36,11 @@ export default ServerCapacity;
 
 const Container = styled.div`
   flex: 1;
-  padding: 10px;
+  padding: 0.625rem;
   background-color: #fff;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  height: calc(50% - 10px);
+  box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.313rem;
+  height: calc(50% - 0.625rem);
 `;
 
 const FlexBox = styled.div`
@@ -49,7 +49,7 @@ const FlexBox = styled.div`
 `;
 
 const SubTitle = styled.div`
-  font-size: 10px;
+  font-size: 0.625rem;
   color: grey;
 `;
 
@@ -68,8 +68,8 @@ const ChartSkills = styled.ul`
     height: inherit;
     border: 2.688rem solid rgba(211, 211, 211, 0.3);
     border-bottom: none;
-    border-top-left-radius: 175px;
-    border-top-right-radius: 175px;
+    border-top-left-radius: 10.938rem;
+    border-top-right-radius: 10.938rem;
   }
 `;
 
@@ -81,8 +81,8 @@ const ChartSkillsContent = styled.li`
   height: inherit;
   border: 2.688rem solid;
   border-top: none;
-  border-bottom-left-radius: 175px;
-  border-bottom-right-radius: 175px;
+  border-bottom-left-radius: 10.938rem;
+  border-bottom-right-radius: 10.938rem;
   transform-origin: 50% 0;
   transform: ${props => props.percent};
   border-color: #717ea4;
@@ -93,6 +93,6 @@ const Percent = styled.p`
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 20px;
+  font-size: 1.25rem;
   text-align: center;
 `;

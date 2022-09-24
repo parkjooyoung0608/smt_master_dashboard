@@ -57,9 +57,9 @@ const DisplayFlex = styled.div`
 `;
 
 const Circle = styled.div`
-  margin-right: 20px;
-  width: 14px;
-  height: 14px;
-  border-radius: 75px;
+  margin-right: 1.25rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 4.688rem;
   background-color: ${props => props.color};
 `;

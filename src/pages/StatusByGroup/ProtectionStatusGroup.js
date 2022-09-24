@@ -35,8 +35,8 @@ const FlexColumnCneter = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90px;
-  margin-right: 20px;
+  width: 5.625rem;
+  margin-right: 1.25rem;
   align-items: center;
 
   ${props =>
@@ -50,18 +50,18 @@ const FlexBox = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
-  line-height: 20px;
+  line-height: 1.25rem;
 `;
 
 const Circle = styled.div`
-  width: 80px;
-  height: 60px;
-  line-height: 60px;
-  margin-bottom: 10px;
-  font-size: 20px;
+  width: 5rem;
+  height: 3.75rem;
+  line-height: 3.75rem;
+  margin-bottom: 0.625rem;
+  font-size: 1.25rem;
   font-weight: bold;
   text-align: center;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 0.313rem;
   background-color: ${props => props.color};
 `;

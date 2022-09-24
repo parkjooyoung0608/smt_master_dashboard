@@ -29,10 +29,10 @@ export default GroupWideOperationStatus;
 const Container = styled.section`
   flex: 1;
   height: 50%;
-  padding: 10px;
+  padding: 0.625rem;
   background-color: #fff;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
+  box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.313rem;
   margin-bottom: 0.625rem;
 `;
 
@@ -47,15 +47,15 @@ const Card = styled.div`
   justify-content: center;
   align-items: center;
   width: 50%;
-  padding: 10px;
+  padding: 0.625rem;
   text-align: center;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 0.313rem;
   background-color: ${props => props.bgColor};
 `;
 
 const P = styled.p`
-  font-size: 12px;
+  font-size: 0.75rem;
 `;
 
 const Span = styled.span`
@@ -66,5 +66,5 @@ const MarginBottom = styled.div`
   margin-bottom: 0.625rem;
 `;
 const MarginRight = styled.div`
-  margin-right: 10px;
+  margin-right: 0.625rem;
 `;

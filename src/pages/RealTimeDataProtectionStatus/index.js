@@ -76,9 +76,9 @@ export default RealTimeDataProtectionStatus;
 const Table = styled.table`
   width: 100%;
   font-size: 0.9em;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
   border-collapse: collapse;
-  border-radius: 5px;
+  border-radius: 0.313rem;
   overflow: hidden;
 `;
 
@@ -88,19 +88,19 @@ const Thead = styled.thead`
 `;
 
 const Tr = styled.tr`
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.625rem 0;
+  border-bottom: 0.063rem solid rgba(0, 0, 0, 0.1);
 `;
 
 const Th = styled.th`
-  padding: 10px 0;
+  padding: 0.625rem 0;
 `;
 
 const Td = styled.td`
-  padding: 10px 0;
+  padding: 0.625rem 0;
   text-align: center;
 `;
 
 const MarginBottom = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 `;

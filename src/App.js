@@ -65,15 +65,15 @@ export default App;
 
 const FlexContainer = styled.div`
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   height: 37%;
 `;
 
 const FirstSection = styled.div`
-  margin-right: 10px;
+  margin-right: 0.625rem;
   width: 20%;
 `;
 
 const MarginRight = styled.div`
-  margin-right: 10px;
+  margin-right: 0.625rem;
 `;

@@ -39,7 +39,7 @@ const FlexContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100% - 30px);
+  height: calc(100% - 1.875rem);
 `;
 
 const Card = styled.div`
@@ -49,7 +49,7 @@ const Card = styled.div`
   text-align: center;
   color: #676a72;
   background-color: #212d4f;
-  border-radius: 5px;
+  border-radius: 0.313rem;
   ${props =>
     props.select &&
     css`
@@ -66,14 +66,14 @@ const CardTextBox = styled.div`
 `;
 
 const CountNum = styled.p`
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: bold;
 `;
 
 const Date = styled.p`
-  font-size: 16px;
+  font-size: 1rem;
 `;
 
 const MarginRight = styled.div`
-  margin-right: 10px;
+  margin-right: 0.625rem;
 `;

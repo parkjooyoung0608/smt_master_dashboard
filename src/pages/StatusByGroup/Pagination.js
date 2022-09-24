@@ -31,14 +31,14 @@ const Nav = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  margin: 16px;
+  gap: 0.25rem;
+  margin: 1rem;
 `;
 
 const Button = styled.button`
   border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
+  border-radius: 0.313rem;
+  padding: 0.5rem 0.75rem;
   margin: 0;
   background: black;
   color: white;
@@ -47,7 +47,7 @@ const Button = styled.button`
   &:hover {
     background: #7e94d4;
     cursor: pointer;
-    transform: translateY(-2px);
+    transform: translateY(-0.125rem);
   }
 
   &[disabled] {

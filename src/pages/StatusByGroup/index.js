@@ -27,10 +27,10 @@ export default StatusByGroup;
 const Container = styled.section`
   flex: 1;
   height: ${props => props.getHeight}px;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 0.625rem;
+  border-radius: 0.313rem;
   background-color: #fff;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
   overflow-y: scroll;
 `;
 
@@ -40,12 +40,12 @@ const Header = styled.div`
 `;
 
 const SelectDateBtn = styled.button`
-  width: 57px;
-  height: 45px;
+  width: 3.563rem;
+  height: 2.813rem;
   color: #676a72;
   background-color: #1e2b45;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.313rem;
   ${props =>
     props.select &&
     css`
@@ -55,9 +55,9 @@ const SelectDateBtn = styled.button`
 `;
 
 const MarginRight = styled.span`
-  margin-right: 10px;
+  margin-right: 0.625rem;
 `;
 
 const MarginTop = styled.div`
-  margin-top: 10px;
+  margin-top: 0.625rem;
 `;

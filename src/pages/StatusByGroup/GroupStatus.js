@@ -154,16 +154,16 @@ const FlexBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 `;
 
 const Table = styled.table`
   width: 100%;
   max-width: 100%;
   font-size: 0.9em;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
   border-collapse: collapse;
-  border-radius: 5px;
+  border-radius: 0.313rem;
   overflow: hidden;
 `;
 
@@ -173,20 +173,20 @@ const Thead = styled.thead`
 `;
 
 const Tr = styled.tr`
-  padding: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.625rem;
+  border-bottom: 0.063rem solid rgba(0, 0, 0, 0.1);
 `;
 
 const Th = styled.th`
-  padding: 10px;
+  padding: 0.625rem;
 `;
 
 const Td = styled.td`
   position: relative;
-  height: 100px;
-  padding: 10px;
+  height: 6.25rem;
+  padding: 0.625rem;
   text-align: center;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 0.063rem solid rgba(0, 0, 0, 0.1);
 `;
 
 const GroupName = styled.div`
@@ -209,11 +209,11 @@ const SituationIcon = styled.div`
 const Label = styled.label`
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 0.625rem;
 `;
 
 const Title = styled.p`
-  margin-left: 5px;
+  margin-left: 0.313rem;
 `;
 
 const SelectContainer = styled.div`
@@ -226,11 +226,11 @@ const SelectTitle = styled.span`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80px;
-  padding: 5px 15px;
-  border: 1px solid #a8a8a8;
+  width: 5rem;
+  padding: 0.313rem 0.938rem;
+  border: 0.063rem solid #a8a8a8;
   background-color: #ffffff;
-  border-radius: 5px;
+  border-radius: 0.313rem;
   ${props =>
     props.onToggle &&
     css`
@@ -243,14 +243,14 @@ const SelectNum = styled.div``;
 const SelectNums = styled.ul`
   display: none;
   position: absolute;
-  top: 35px;
-  left: -10px;
-  width: 80px;
-  margin-left: 10px;
-  border: 1px solid #a8a8a8;
-  border-radius: 5px;
+  top: 2.188rem;
+  left: -0.625rem;
+  width: 5rem;
+  margin-left: 0.625rem;
+  border: 0.063rem solid #a8a8a8;
+  border-radius: 0.313rem;
   background-color: #fff;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
   z-index: 100;
   ${props =>
     props.onToggle &&
@@ -260,7 +260,7 @@ const SelectNums = styled.ul`
 `;
 
 const Option = styled.li`
-  padding: 3px 10px;
+  padding: 0.188rem 0.625rem;
   &:hover {
     font-weight: bold;
     background-color: #ecedef;

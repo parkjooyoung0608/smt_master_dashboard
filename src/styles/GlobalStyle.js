@@ -14,7 +14,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     background-color: #f1f1f1;
     font-family: 'Roboto', 'Noto Sans KR', sans-serif;
-
+    text-overflow: ellipsis;
+    white-space:nowrap;
   }
 
 `;
