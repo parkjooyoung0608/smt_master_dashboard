@@ -53,7 +53,7 @@ const Title = styled.p`
   ${props =>
     props.color &&
     css`
-      color: #000;
+      color: rgb(25, 25, 25);
     `}
 
   ${props =>

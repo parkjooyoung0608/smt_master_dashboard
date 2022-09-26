@@ -7,90 +7,34 @@ const OperationStatus = ({
   connectedClientCnt,
   expiredLicenseCnt,
 }) => {
-  const isPc = useMediaQuery({
-    query: "(min-width:1240px)",
-  });
-
   const isTablet = useMediaQuery({
     query: "(min-width:768px) and (max-width:1240px)",
   });
 
   return (
     <Container>
-      {isPc && (
+      {!(expiredLicenseCnt || connectedClientCnt || usedLicenseCnt) ? (
+        <P>데이터가 없습니다.</P>
+      ) : (
         <FlexBox>
-          <BarChartContainer>
-            {!(expiredLicenseCnt || connectedClientCnt || usedLicenseCnt) ? (
-              <P>데이터가 없습니다.</P>
-            ) : (
-              <>
-                <ExpirationCount percent={expiredLicenseCnt}>
-                  {expiredLicenseCnt}
-                </ExpirationCount>
-                <ConnectCount percent={connectedClientCnt}>
-                  {connectedClientCnt}
-                </ConnectCount>
-                <RegistrationCount percent={usedLicenseCnt}>
-                  {usedLicenseCnt}
-                </RegistrationCount>
-              </>
-            )}
-          </BarChartContainer>
           <div>
-            <FlexBox>
-              <Circle color="#1c7fff" />
-              <Span>접속</Span>
-            </FlexBox>
-            <MarginBottom />
-            <FlexBox>
-              <Circle color="#f85353" />
-              <Span>만료</Span>
-            </FlexBox>
-            <MarginBottom />
-            <FlexBox>
-              <Circle color="#e1e1e1" />
-              <Span>등록</Span>
-            </FlexBox>
+            <Count percent={expiredLicenseCnt}>{expiredLicenseCnt}</Count>
+            <Line color="#1c7fff" />
+            <Span>접속</Span>
+          </div>
+          <MarginRight isTablet={isTablet} />
+          <div>
+            <Count percent={connectedClientCnt}>{connectedClientCnt}</Count>
+            <Line color="#f85353" />
+            <Span>만료</Span>
+          </div>
+          <MarginRight isTablet={isTablet} />
+          <div>
+            <Count percent={usedLicenseCnt}>{usedLicenseCnt}</Count>
+            <Line color="#339473" />
+            <Span>등록</Span>
           </div>
         </FlexBox>
-      )}
-
-      {isTablet && (
-        <>
-          <BarChartContainer isTablet={isTablet}>
-            {!(expiredLicenseCnt || connectedClientCnt || usedLicenseCnt) ? (
-              <P>데이터가 없습니다.</P>
-            ) : (
-              <>
-                <ExpirationCount percent={expiredLicenseCnt}>
-                  {expiredLicenseCnt}
-                </ExpirationCount>
-                <ConnectCount percent={connectedClientCnt}>
-                  {connectedClientCnt}
-                </ConnectCount>
-                <RegistrationCount percent={usedLicenseCnt}>
-                  {usedLicenseCnt}
-                </RegistrationCount>
-              </>
-            )}
-          </BarChartContainer>
-          <FlexBox isTablet={isTablet}>
-            <FlexBox marginRight={true}>
-              <Circle color="#1c7fff" isTablet={isTablet} />
-              <Span>접속</Span>
-            </FlexBox>
-            <MarginBottom />
-            <FlexBox marginRight={true}>
-              <Circle color="#f85353" isTablet={isTablet} />
-              <Span>만료</Span>
-            </FlexBox>
-            <MarginBottom />
-            <FlexBox>
-              <Circle color="#e1e1e1" isTablet={isTablet} />
-              <Span>등록</Span>
-            </FlexBox>
-          </FlexBox>
-        </>
       )}
     </Container>
   );
@@ -127,73 +71,32 @@ const FlexBox = styled.div`
     `}
 `;
 
-const BarChartContainer = styled.div`
-  display: flex;
-  align-content: center;
-  width: 70%;
-  height: 3.75rem;
-  margin-right: 1.875rem;
-  line-height: 3.75rem;
-
-  ${props =>
-    props.isTablet &&
-    css`
-      width: 100%;
-      margin-right: 0;
-      margin-bottom: 0.625rem;
-    `}
-`;
-
-const ExpirationCount = styled.div`
-  width: ${props => props.percent}%;
-  height: 100%;
-  color: #fff;
-  background-color: #f85353;
-`;
-const ConnectCount = styled.div`
-  width: ${props => props.percent}%;
-  height: 100%;
-  color: #fff;
-  background-color: #1c7fff;
-`;
-const RegistrationCount = styled.div`
-  width: ${props => props.percent}%;
-  height: 100%;
-  color: #fff;
-  background-color: #e1e1e1;
-`;
-
-const Circle = styled.div`
-  margin-right: 1.25rem;
-  width: 0.875rem;
-  height: 0.875rem;
-  border-radius: 4.688rem;
-  background-color: ${props => props.color};
-
-  ${props =>
-    props.isTablet &&
-    css`
-      margin-right: 0.313rem;
-    `}
+const Line = styled.div`
+  width: 3rem;
+  margin: 0.5rem 0 0.25rem;
+  border: 0.063rem solid red;
+  border-color: ${props => props.color};
 `;
 
 const P = styled.p`
   width: 100%;
   color: #9e9b9b;
-  font-weight: bold;
   text-align: center;
 `;
 
-const Span = styled.span`
+const Span = styled.span``;
+
+const Count = styled.em`
+  font-size: 1.5rem;
   font-weight: bold;
+`;
+
+const MarginRight = styled.div`
+  margin-right: 1.5rem;
 
   ${props =>
     props.isTablet &&
     css`
-      margin-right: 10px;
+      margin-right: 0.5rem;
     `}
-`;
-
-const MarginBottom = styled.div`
-  margin-bottom: 0.313rem;
 `;
