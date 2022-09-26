@@ -30,6 +30,22 @@ const RealTimeDataProtectionStatus = () => {
       clientIp: "192.168.0.20",
       connectIp: "192.168.0.20",
     },
+    {
+      id: 4,
+      group: "박주영",
+      occurrenceTime: "2022-09-29 09:48:04",
+      registrationTime: "2022-09-29 09:50:04",
+      clientIp: "192.168.0.20",
+      connectIp: "192.168.0.20",
+    },
+    {
+      id: 5,
+      group: "박주영",
+      occurrenceTime: "2022-09-29 09:48:04",
+      registrationTime: "2022-09-29 09:50:04",
+      clientIp: "192.168.0.20",
+      connectIp: "192.168.0.20",
+    },
   ];
 
   return (

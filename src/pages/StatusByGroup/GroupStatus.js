@@ -43,7 +43,9 @@ const GroupStatus = () => {
   return (
     <Container>
       <FlexBox>
-        <p>총 {totalGroup}개 그룹</p>
+        <p>
+          총 <Em>{totalGroup}</Em>개 그룹
+        </p>
         <Label>
           <SelectContainer>
             <SelectTitle onToggle={toggle} onClick={onShowDropbox}>
@@ -265,4 +267,10 @@ const Option = styled.li`
     font-weight: bold;
     background-color: #ecedef;
   }
+`;
+
+const Em = styled.em`
+  font-size: 24px;
+  font-weight: bold;
+  color: #212d4f;
 `;
