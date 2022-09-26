@@ -1,30 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import BoxContainer from "../../component/BoxContainer";
 import Title from "../../component/Title";
 import styled, { css } from "styled-components";
 
 const AllDataProtectionStatus = () => {
+  const [blockedData, setBlockedData] = useState();
+
+  useEffect(() => {
+    fetch(
+      "http://192.168.0.75:8080/ds_api/dashboard/statis/total/block-proc/all-group",
+      { method: "POST" }
+    )
+      .then(res => res.json())
+      .then(data => {
+        setBlockedData(data.data);
+      });
+  }, [setBlockedData]);
+
+  const todayProcessData =
+    blockedData && blockedData[0].processBlockAllCnt.toLocaleString("en-US");
+  const weekProcessData =
+    blockedData && blockedData[1].processBlockAllCnt.toLocaleString("en-US");
+  const monthProcessData =
+    blockedData && blockedData[2].processBlockAllCnt.toLocaleString("en-US");
+
   return (
     <BoxContainer>
       <Title title="그룹 전체 데이터 보호 현황" />
       <FlexContainer>
         <Card select="#8195CF">
           <CardTextBox>
-            <CountNum>10</CountNum>
+            <CountNum>{todayProcessData}</CountNum>
             <Date>일</Date>
           </CardTextBox>
         </Card>
         <MarginRight />
         <Card>
           <CardTextBox>
-            <CountNum>4,881</CountNum>
+            <CountNum>{weekProcessData}</CountNum>
             <Date>주</Date>
           </CardTextBox>
         </Card>
         <MarginRight />
         <Card>
           <CardTextBox>
-            <CountNum>13,408</CountNum>
+            <CountNum>{monthProcessData}</CountNum>
             <Date>월</Date>
           </CardTextBox>
         </Card>
