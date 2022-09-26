@@ -40,17 +40,19 @@ const Header = styled.div`
 `;
 
 const SelectDateBtn = styled.button`
-  width: 3.563rem;
-  height: 2.813rem;
+  width: 2rem;
+  background-color: inherit;
   color: #676a72;
-  background-color: #1e2b45;
+  font-size: 1rem;
+  font-weight: bold;
   border: none;
-  border-radius: 0.313rem;
+  cursor: pointer;
   ${props =>
     props.select &&
     css`
-      color: #ffffff;
-      background-color: #7e94d4;
+      padding: 0.4rem 0;
+      color: rgb(25, 25, 25);
+      border-bottom: 2px solid #7e94d4;
     `}
 `;
 
