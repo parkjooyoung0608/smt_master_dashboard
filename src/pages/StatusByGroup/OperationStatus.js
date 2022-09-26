@@ -1,48 +1,97 @@
 import React from "react";
-import styled from "styled-components";
+import { useMediaQuery } from "react-responsive";
+import styled, { css } from "styled-components";
 
 const OperationStatus = ({
   usedLicenseCnt,
   connectedClientCnt,
   expiredLicenseCnt,
 }) => {
+  const isPc = useMediaQuery({
+    query: "(min-width:1240px)",
+  });
+
+  const isTablet = useMediaQuery({
+    query: "(min-width:768px) and (max-width:1240px)",
+  });
+
   return (
     <Container>
-      <FlexBox>
-        <BarChartContainer>
-          {!(expiredLicenseCnt || connectedClientCnt || usedLicenseCnt) ? (
-            <P>데이터가 없습니다.</P>
-          ) : (
-            <>
-              <ExpirationCount percent={expiredLicenseCnt}>
-                {expiredLicenseCnt}
-              </ExpirationCount>
-              <ConnectCount percent={connectedClientCnt}>
-                {connectedClientCnt}
-              </ConnectCount>
-              <RegistrationCount percent={usedLicenseCnt}>
-                {usedLicenseCnt}
-              </RegistrationCount>
-            </>
-          )}
-        </BarChartContainer>
-        <div>
+      {isPc && (
+        <FlexBox>
+          <BarChartContainer>
+            {!(expiredLicenseCnt || connectedClientCnt || usedLicenseCnt) ? (
+              <P>데이터가 없습니다.</P>
+            ) : (
+              <>
+                <ExpirationCount percent={expiredLicenseCnt}>
+                  {expiredLicenseCnt}
+                </ExpirationCount>
+                <ConnectCount percent={connectedClientCnt}>
+                  {connectedClientCnt}
+                </ConnectCount>
+                <RegistrationCount percent={usedLicenseCnt}>
+                  {usedLicenseCnt}
+                </RegistrationCount>
+              </>
+            )}
+          </BarChartContainer>
+          <div>
+            <FlexBox>
+              <Circle color="#1c7fff" />
+              <Span>접속</Span>
+            </FlexBox>
+            <MarginBottom />
+            <FlexBox>
+              <Circle color="#f85353" />
+              <Span>만료</Span>
+            </FlexBox>
+            <MarginBottom />
+            <FlexBox>
+              <Circle color="#e1e1e1" />
+              <Span>등록</Span>
+            </FlexBox>
+          </div>
+        </FlexBox>
+      )}
+
+      {isTablet && (
+        <>
+          <BarChartContainer isTablet={isTablet}>
+            {!(expiredLicenseCnt || connectedClientCnt || usedLicenseCnt) ? (
+              <P>데이터가 없습니다.</P>
+            ) : (
+              <>
+                <ExpirationCount percent={expiredLicenseCnt}>
+                  {expiredLicenseCnt}
+                </ExpirationCount>
+                <ConnectCount percent={connectedClientCnt}>
+                  {connectedClientCnt}
+                </ConnectCount>
+                <RegistrationCount percent={usedLicenseCnt}>
+                  {usedLicenseCnt}
+                </RegistrationCount>
+              </>
+            )}
+          </BarChartContainer>
           <FlexBox>
-            <Circle color="#1c7fff" />
-            <Span>접속</Span>
+            <FlexBox>
+              <Circle color="#1c7fff" />
+              <Span>접속</Span>
+            </FlexBox>
+            <MarginBottom />
+            <FlexBox>
+              <Circle color="#f85353" />
+              <Span>만료</Span>
+            </FlexBox>
+            <MarginBottom />
+            <FlexBox>
+              <Circle color="#e1e1e1" />
+              <Span>등록</Span>
+            </FlexBox>
           </FlexBox>
-          <MarginBottom />
-          <FlexBox>
-            <Circle color="#f85353" />
-            <Span>만료</Span>
-          </FlexBox>
-          <MarginBottom />
-          <FlexBox>
-            <Circle color="#e1e1e1" />
-            <Span>등록</Span>
-          </FlexBox>
-        </div>
-      </FlexBox>
+        </>
+      )}
     </Container>
   );
 };
@@ -72,6 +121,14 @@ const BarChartContainer = styled.div`
   height: 3.75rem;
   margin-right: 1.875rem;
   line-height: 3.75rem;
+
+  ${props =>
+    props.isTablet &&
+    css`
+      width: 100%;
+      margin-right: 0;
+      padding: 10px;
+    `}
 `;
 
 const ExpirationCount = styled.div`
@@ -99,6 +156,12 @@ const Circle = styled.div`
   height: 0.875rem;
   border-radius: 4.688rem;
   background-color: ${props => props.color};
+
+  ${props =>
+    props.isTablet &&
+    css`
+      margin-right: 0;
+    `}
 `;
 
 const P = styled.p`
@@ -110,6 +173,12 @@ const P = styled.p`
 
 const Span = styled.span`
   font-weight: bold;
+
+  ${props =>
+    props.isTablet &&
+    css`
+      margin-right: 10px;
+    `}
 `;
 
 const MarginBottom = styled.div`

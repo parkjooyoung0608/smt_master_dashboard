@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import useWindowSize from "./hooks/useWindowSize";
 import AllDataProtectionStatus from "./pages/AllDataProtectionStatus";
 import GroupWideOperationStatus from "./pages/GroupWideOperationStatus";
@@ -42,21 +43,54 @@ function App() {
     setElementHeight(getElementHeight);
   }, []);
 
+  const isPc = useMediaQuery({
+    query: "(min-width:1240px)",
+  });
+  const isTablet = useMediaQuery({
+    query: "(min-width:768px) and (max-width:1240px)",
+  });
+  const isMobile = useMediaQuery({
+    query: "(max-width:767px)",
+  });
+
   return (
     <>
-      <GlobalStyle />
-      <DashBoardContainer>
-        <FlexContainer ref={targetRef}>
-          <FirstSection>
-            <GroupWideOperationStatus />
-            <ServerCapacity />
-          </FirstSection>
+      {isPc && (
+        <>
+          <GlobalStyle />
+          <DashBoardContainer>
+            <FlexContainer ref={targetRef}>
+              <FirstSection>
+                <GroupWideOperationStatus />
+                <ServerCapacity />
+              </FirstSection>
+              <AllDataProtectionStatus />
+              <MarginRight />
+              <RealTimeDataProtectionStatus />
+            </FlexContainer>
+            <StatusByGroup getHeight={getHeight} />
+          </DashBoardContainer>
+        </>
+      )}
+      {isTablet && (
+        <>
+          <GlobalStyle />
+          <GroupWideOperationStatus />
+          <MarginButton />
+          <ServerCapacity />
+          <MarginButton />
           <AllDataProtectionStatus />
-          <MarginRight />
+          <MarginButton />
           <RealTimeDataProtectionStatus />
-        </FlexContainer>
-        <StatusByGroup getHeight={getHeight} />
-      </DashBoardContainer>
+          <MarginButton />
+          <StatusByGroup />
+        </>
+      )}
+      {isMobile && (
+        <MobileContainer>
+          화면 크기를 767px 이상으로 늘려주세요.
+        </MobileContainer>
+      )}
     </>
   );
 }
@@ -76,4 +110,20 @@ const FirstSection = styled.div`
 
 const MarginRight = styled.div`
   margin-right: 0.625rem;
+`;
+
+const MarginButton = styled.div`
+  margin-bottom: 0.625rem;
+`;
+
+const MobileContainer = styled.div`
+  background-color: #212d4f;
+  width: 100vw;
+  height: 100vh;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

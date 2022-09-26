@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const ExpiryPeriod = ({ operateEndDate }) => {
+const ExpiryPeriod = ({ operateEndDate, isPc }) => {
   const nowDate = new Date();
   const endDate = new Date(operateEndDate);
   const diffDate = nowDate.getTime() - endDate.getTime();
@@ -17,12 +17,12 @@ const ExpiryPeriod = ({ operateEndDate }) => {
   return (
     <Container>
       {diffDate > 0 ? (
-        <Title>{getDateDiff()}일 지남</Title>
+        <Title isPc={isPc}>{getDateDiff()}일 지남</Title>
       ) : (
         <Title color={true}>{getDateDiff()}일 남음</Title>
       )}
 
-      <Period>~{operateEndDate}</Period>
+      <Period isPc={isPc}>~{operateEndDate}</Period>
     </Container>
   );
 };
@@ -48,8 +48,20 @@ const Title = styled.p`
     css`
       color: #000;
     `}
+
+  ${props =>
+    !props.isPc &&
+    css`
+      font-size: 14px;
+    `}
 `;
 
 const Period = styled.p`
   color: grey;
+
+  ${props =>
+    !props.isPc &&
+    css`
+      font-size: 10px;
+    `}
 `;

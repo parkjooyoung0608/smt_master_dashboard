@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const BoxContainer = ({ children }) => {
-  //const componentCheck = children.includes();
-
   return <Container>{children}</Container>;
 };
 

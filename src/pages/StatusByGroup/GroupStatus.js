@@ -9,7 +9,7 @@ import styled, { css } from "styled-components";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import CustomizedSwitches from "../../component/onOffBtn";
 
-const GroupStatus = () => {
+const GroupStatus = ({ isPc }) => {
   const [allGroupData, setAllGroupData] = useState("");
   const [totalGroup, setTotalGroup] = useState("");
   const [limit, setLimit] = useState(10);
@@ -79,8 +79,8 @@ const GroupStatus = () => {
         <colgroup>
           <col style={{ width: 10 + "%" }} />
           <col style={{ width: 10 + "%" }} />
-          <col style={{ width: 25 + "%" }} />
-          <col style={{ width: 10 + "%" }} />
+          <col style={{ width: 20 + "%" }} />
+          <col style={{ width: 15 + "%" }} />
           <col style={{ width: 10 + "%" }} />
           <col style={{ width: 30 + "%" }} />
           <col style={{ width: 5 + "%" }} />
@@ -101,13 +101,17 @@ const GroupStatus = () => {
             <tbody key={props.groupIdx}>
               <Tr>
                 <Td>
-                  <GroupName>{props.groupName}</GroupName>
+                  <GroupName isPc={isPc}>{props.groupName}</GroupName>
                 </Td>
                 <Td>
-                  <ExpiryPeriod operateEndDate={props.operateEndDate} />
+                  <ExpiryPeriod
+                    isPc={isPc}
+                    operateEndDate={props.operateEndDate}
+                  />
                 </Td>
                 <Td>
                   <OperationStatus
+                    isPc={isPc}
                     usedLicenseCnt={props.usedLicenseCnt}
                     connectedClientCnt={props.connectedClientCnt}
                     expiredLicenseCnt={props.expiredLicenseCnt}
@@ -199,6 +203,12 @@ const GroupName = styled.div`
   width: 100%;
   text-align: center;
   font-weight: bold;
+
+  ${props =>
+    !props.isPc &&
+    css`
+      font-size: 12px;
+    `}
 `;
 
 const SituationIcon = styled.div`

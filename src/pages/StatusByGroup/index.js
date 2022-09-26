@@ -3,7 +3,7 @@ import Title from "../../component/Title";
 import styled, { css } from "styled-components";
 import GroupStatus from "./GroupStatus";
 
-const StatusByGroup = ({ getHeight }) => {
+const StatusByGroup = ({ getHeight, isPc }) => {
   return (
     <Container getHeight={getHeight}>
       <Header>
@@ -17,7 +17,7 @@ const StatusByGroup = ({ getHeight }) => {
         </div>
       </Header>
       <MarginTop />
-      <GroupStatus />
+      <GroupStatus isPc={isPc} />
     </Container>
   );
 };
