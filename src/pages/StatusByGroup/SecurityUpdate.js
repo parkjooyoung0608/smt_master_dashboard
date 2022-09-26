@@ -1,12 +1,24 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 
 const SecurityUpdate = ({ noVerifiedSecUpdateCnt }) => {
+  const isPc = useMediaQuery({
+    query: "(min-width:1240px)",
+  });
+
   return (
     <Container>
       <FlexBox>
         <PcCount>{noVerifiedSecUpdateCnt}</PcCount>
-        <P>업데이트 필요 PC</P>
+        {isPc ? (
+          <P>업데이트 필요 PC</P>
+        ) : (
+          <>
+            <P>업데이트 필요</P>
+            <P>PC</P>
+          </>
+        )}
       </FlexBox>
     </Container>
   );

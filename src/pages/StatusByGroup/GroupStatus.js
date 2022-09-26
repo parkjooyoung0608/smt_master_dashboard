@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import ExpiryPeriod from "./ExpiryPeriod";
 import OperationStatus from "./OperationStatus";
 import PolicyChangeStatus from "./PolicyChangeStatus";
@@ -9,7 +10,7 @@ import styled, { css } from "styled-components";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import CustomizedSwitches from "../../component/onOffBtn";
 
-const GroupStatus = ({ isPc }) => {
+const GroupStatus = () => {
   const [allGroupData, setAllGroupData] = useState("");
   const [totalGroup, setTotalGroup] = useState("");
   const [limit, setLimit] = useState(10);
@@ -39,6 +40,10 @@ const GroupStatus = ({ isPc }) => {
   const onShowDropbox = () => {
     setToggle(!toggle);
   };
+
+  const isTablet = useMediaQuery({
+    query: "(min-width:768px) and (max-width:1240px)",
+  });
 
   return (
     <Container>
@@ -101,17 +106,13 @@ const GroupStatus = ({ isPc }) => {
             <tbody key={props.groupIdx}>
               <Tr>
                 <Td>
-                  <GroupName isPc={isPc}>{props.groupName}</GroupName>
+                  <GroupName isTablet={isTablet}>{props.groupName}</GroupName>
                 </Td>
                 <Td>
-                  <ExpiryPeriod
-                    isPc={isPc}
-                    operateEndDate={props.operateEndDate}
-                  />
+                  <ExpiryPeriod operateEndDate={props.operateEndDate} />
                 </Td>
                 <Td>
                   <OperationStatus
-                    isPc={isPc}
                     usedLicenseCnt={props.usedLicenseCnt}
                     connectedClientCnt={props.connectedClientCnt}
                     expiredLicenseCnt={props.expiredLicenseCnt}
@@ -193,6 +194,7 @@ const Td = styled.td`
   padding: 0.625rem;
   text-align: center;
   border-right: 0.063rem solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 `;
 
 const GroupName = styled.div`
@@ -205,9 +207,9 @@ const GroupName = styled.div`
   font-weight: bold;
 
   ${props =>
-    !props.isPc &&
+    props.isTablet &&
     css`
-      font-size: 12px;
+      font-size: 0.75rem;
     `}
 `;
 

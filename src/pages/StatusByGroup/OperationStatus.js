@@ -74,19 +74,19 @@ const OperationStatus = ({
               </>
             )}
           </BarChartContainer>
-          <FlexBox>
-            <FlexBox>
-              <Circle color="#1c7fff" />
+          <FlexBox isTablet={isTablet}>
+            <FlexBox marginRight={true}>
+              <Circle color="#1c7fff" isTablet={isTablet} />
               <Span>접속</Span>
             </FlexBox>
             <MarginBottom />
-            <FlexBox>
-              <Circle color="#f85353" />
+            <FlexBox marginRight={true}>
+              <Circle color="#f85353" isTablet={isTablet} />
               <Span>만료</Span>
             </FlexBox>
             <MarginBottom />
             <FlexBox>
-              <Circle color="#e1e1e1" />
+              <Circle color="#e1e1e1" isTablet={isTablet} />
               <Span>등록</Span>
             </FlexBox>
           </FlexBox>
@@ -104,6 +104,7 @@ const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+  padding: 0.625rem;
 `;
 
 const FlexBox = styled.div`
@@ -112,6 +113,18 @@ const FlexBox = styled.div`
   align-items: center;
   text-align: center;
   line-height: 1.25rem;
+
+  ${props =>
+    props.isTablet &&
+    css`
+      justify-content: flex-start;
+    `}
+
+  ${props =>
+    props.marginRight &&
+    css`
+      margin-right: 0.625rem;
+    `}
 `;
 
 const BarChartContainer = styled.div`
@@ -127,7 +140,7 @@ const BarChartContainer = styled.div`
     css`
       width: 100%;
       margin-right: 0;
-      padding: 10px;
+      margin-bottom: 0.625rem;
     `}
 `;
 
@@ -160,7 +173,7 @@ const Circle = styled.div`
   ${props =>
     props.isTablet &&
     css`
-      margin-right: 0;
+      margin-right: 0.313rem;
     `}
 `;
 

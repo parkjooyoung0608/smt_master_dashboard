@@ -1,33 +1,38 @@
 import React from "react";
-import styled from "styled-components";
+import { useMediaQuery } from "react-responsive";
+import styled, { css } from "styled-components";
 
 const PolicyChangeStatus = () => {
+  const isTablet = useMediaQuery({
+    query: "(min-width:768px) and (max-width:1240px)",
+  });
+
   return (
     <Container>
       <FlexBox>
         <DisplayFlex>
-          <Circle color="#111735" />
+          <Circle color="#111735" isTablet={isTablet} />
           <span>데이터 정책</span>
         </DisplayFlex>
         <span>0</span>
       </FlexBox>
       <FlexBox>
         <DisplayFlex>
-          <Circle color="#223781" />
+          <Circle color="#223781" isTablet={isTablet} />
           <span>시스템</span>
         </DisplayFlex>
         <span>0</span>
       </FlexBox>
       <FlexBox>
         <DisplayFlex>
-          <Circle color="#3E5B7D" />
+          <Circle color="#3E5B7D" isTablet={isTablet} />
           <span>운영환경</span>
         </DisplayFlex>
         <span>0</span>
       </FlexBox>
       <FlexBox>
         <DisplayFlex>
-          <Circle color="#7AADDD" />
+          <Circle color="#7AADDD" isTablet={isTablet} />
           <span>계정</span>
         </DisplayFlex>
         <span>0</span>
@@ -62,4 +67,10 @@ const Circle = styled.div`
   height: 0.875rem;
   border-radius: 4.688rem;
   background-color: ${props => props.color};
+
+  ${props =>
+    props.isTablet &&
+    css`
+      margin-right: 0.8rem;
+    `}
 `;

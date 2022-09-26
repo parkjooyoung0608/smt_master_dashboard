@@ -1,7 +1,8 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import styled, { css } from "styled-components";
 
-const ExpiryPeriod = ({ operateEndDate, isPc }) => {
+const ExpiryPeriod = ({ operateEndDate }) => {
   const nowDate = new Date();
   const endDate = new Date(operateEndDate);
   const diffDate = nowDate.getTime() - endDate.getTime();
@@ -14,12 +15,18 @@ const ExpiryPeriod = ({ operateEndDate, isPc }) => {
     }
   };
 
+  const isPc = useMediaQuery({
+    query: "(min-width:1240px)",
+  });
+
   return (
     <Container>
       {diffDate > 0 ? (
         <Title isPc={isPc}>{getDateDiff()}일 지남</Title>
       ) : (
-        <Title color={true}>{getDateDiff()}일 남음</Title>
+        <Title color={true} isPc={isPc}>
+          {getDateDiff()}일 남음
+        </Title>
       )}
 
       <Period isPc={isPc}>~{operateEndDate}</Period>
