@@ -37,27 +37,29 @@ const Nav = styled.nav`
 
 const Button = styled.button`
   border: none;
-  border-radius: 0.313rem;
   padding: 0.5rem 0.75rem;
   margin: 0;
-  background: black;
-  color: white;
+  background: #fff;
+  color: rgb(25, 25, 25);
   font-size: 1rem;
 
   &:hover {
-    background: #7e94d4;
+    border-bottom: 2px solid #7e94d4;
     cursor: pointer;
-    transform: translateY(-0.125rem);
   }
 
   &[disabled] {
-    background: grey;
+    border: none;
+    color: grey;
     cursor: revert;
     transform: revert;
   }
 
   &[aria-current] {
+    border: none;
+    border-radius: 0.313rem;
     background: #7e94d4;
+    color: #fff;
     font-weight: bold;
     cursor: revert;
     transform: revert;
