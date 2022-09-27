@@ -1,23 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import Title from "../../component/Title";
 import styled, { css } from "styled-components";
 import GroupStatus from "./GroupStatus";
 
 const StatusByGroup = ({ getHeight }) => {
+  const [changeDate, setChangeDate] = useState("0");
+
+  const onClickDate = e => {
+    setChangeDate(e.target.value);
+  };
+
   return (
     <Container getHeight={getHeight}>
       <Header>
         <Title title="그룹별 현황" />
         <div>
-          <SelectDateBtn select="#7E94D4">일</SelectDateBtn>
+          <SelectDateBtn
+            value="0"
+            onClick={e => {
+              onClickDate(e);
+            }}
+            select={changeDate === "0" && "#7E94D4"}
+          >
+            일
+          </SelectDateBtn>
           <MarginRight />
-          <SelectDateBtn>주</SelectDateBtn>
+          <SelectDateBtn
+            value="1"
+            onClick={e => {
+              onClickDate(e);
+            }}
+            select={changeDate === "1" && "#7E94D4"}
+          >
+            주
+          </SelectDateBtn>
           <MarginRight />
-          <SelectDateBtn>월</SelectDateBtn>
+          <SelectDateBtn
+            value="2"
+            onClick={e => {
+              onClickDate(e);
+            }}
+            select={changeDate === "2" && "#7E94D4"}
+          >
+            월
+          </SelectDateBtn>
         </div>
       </Header>
       <MarginTop />
-      <GroupStatus />
+      <GroupStatus changeDate={changeDate} />
     </Container>
   );
 };

@@ -10,7 +10,7 @@ import styled, { css } from "styled-components";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import CustomizedSwitches from "../../component/onOffBtn";
 
-const GroupStatus = () => {
+const GroupStatus = ({ changeDate }) => {
   const [allGroupData, setAllGroupData] = useState("");
   const [totalGroup, setTotalGroup] = useState("");
   const [limit, setLimit] = useState(10);
@@ -20,13 +20,31 @@ const GroupStatus = () => {
   const offset = (page - 1) * limit;
 
   useEffect(() => {
-    fetch("data/allGroup.json", { method: "GET" })
-      .then(res => res.json())
-      .then(data => {
-        setAllGroupData(data.data.searchedList);
-        setTotalGroup(data.data.total);
-      });
-  }, []);
+    if (changeDate === "0") {
+      fetch("data/allGroup.json", { method: "GET" })
+        .then(res => res.json())
+        .then(data => {
+          setAllGroupData(data.data.searchedList);
+          setTotalGroup(data.data.total);
+        });
+    }
+    if (changeDate === "1") {
+      fetch("data/allGroupWeek.json", { method: "GET" })
+        .then(res => res.json())
+        .then(data => {
+          setAllGroupData(data.data.searchedList);
+          setTotalGroup(data.data.total);
+        });
+    }
+    if (changeDate === "2") {
+      fetch("data/allGroupMonth.json", { method: "GET" })
+        .then(res => res.json())
+        .then(data => {
+          setAllGroupData(data.data.searchedList);
+          setTotalGroup(data.data.total);
+        });
+    }
+  }, [changeDate]);
 
   const option = e => {
     setPageShow(e.target.value);
