@@ -8,7 +8,7 @@ const Title = ({ title }) => {
 export default Title;
 
 const SectionTitle = styled.h2`
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: bold;
   white-space: nowrap;
 `;

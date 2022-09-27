@@ -6,9 +6,10 @@ import PolicyChangeStatus from "./PolicyChangeStatus";
 import ProtectionStatusGroup from "./ProtectionStatusGroup";
 import SecurityUpdate from "./SecurityUpdate";
 import Pagination from "./Pagination";
+import CustomizedSwitches from "../../component/onOffBtn";
 import styled, { css } from "styled-components";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
-import CustomizedSwitches from "../../component/onOffBtn";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const GroupStatus = ({ changeDate }) => {
   const [allGroupData, setAllGroupData] = useState("");
@@ -102,7 +103,7 @@ const GroupStatus = ({ changeDate }) => {
         <colgroup>
           <col style={{ width: 10 + "%" }} />
           <col style={{ width: 10 + "%" }} />
-          <col style={{ width: 20 + "%" }} />
+          <col style={{ width: 15 + "%" }} />
           <col style={{ width: 15 + "%" }} />
           <col style={{ width: 10 + "%" }} />
           <col style={{ width: 30 + "%" }} />
@@ -110,13 +111,48 @@ const GroupStatus = ({ changeDate }) => {
         </colgroup>
         <Thead>
           <Tr>
-            <Th>그룹</Th>
-            <Th>유효 기간</Th>
-            <Th>그룹별 운용 현황</Th>
-            <Th>정책 변경 현황</Th>
-            <Th>보안 업데이트</Th>
-            <Th>그룹별 데이터 보호</Th>
-            <Th>상태</Th>
+            <Th>
+              <Title>
+                그룹
+                <MdKeyboardArrowDown className="arrow" />
+              </Title>
+            </Th>
+            <Th>
+              <Title>
+                유효 기간
+                <MdKeyboardArrowDown className="arrow" />
+              </Title>
+            </Th>
+            <Th>
+              <Title>
+                그룹별 운용 현황
+                <MdKeyboardArrowDown className="arrow" />
+              </Title>
+            </Th>
+            <Th>
+              <Title>
+                정책 변경 현황
+                <MdKeyboardArrowDown className="arrow" />
+              </Title>
+            </Th>
+            <Th>
+              <Title>
+                보안 업데이트
+                <MdKeyboardArrowDown className="arrow" />
+              </Title>
+            </Th>
+            <Th>
+              <Title>
+                그룹별 데이터 보호
+                <MdKeyboardArrowDown className="arrow" />
+              </Title>
+            </Th>
+            <Th>
+              <Title>
+                상태
+                <MdKeyboardArrowDown className="arrow" />
+              </Title>
+            </Th>
           </Tr>
         </Thead>
         {allGroupData &&
@@ -188,13 +224,13 @@ const Table = styled.table`
   font-size: 0.9em;
   box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
   border-collapse: collapse;
-  border-radius: 0.313rem;
   overflow: hidden;
 `;
 
 const Thead = styled.thead`
-  background-color: #8195cf;
-  color: #fff;
+  font-weight: bold;
+  background-color: rgb(228, 226, 226);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 `;
 
 const Tr = styled.tr`
@@ -204,6 +240,18 @@ const Tr = styled.tr`
 
 const Th = styled.th`
   padding: 0.625rem;
+  padding-left: 1.5rem;
+
+  .arrow {
+    font-size: 1rem;
+    vertical-align: top;
+    margin-top: 1px;
+    margin-left: 0.5rem;
+  }
+`;
+
+const Title = styled.p`
+  margin-left: 0.313rem;
 `;
 
 const Td = styled.td`
@@ -243,11 +291,6 @@ const Label = styled.label`
   align-items: center;
   margin-top: 0.625rem;
 `;
-
-const Title = styled.p`
-  margin-left: 0.313rem;
-`;
-
 const SelectContainer = styled.div`
   position: relative;
   display: flex;
@@ -300,7 +343,7 @@ const Option = styled.li`
 `;
 
 const Em = styled.em`
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #212d4f;
 `;

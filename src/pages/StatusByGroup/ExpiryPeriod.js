@@ -24,7 +24,7 @@ const ExpiryPeriod = ({ operateEndDate }) => {
       {diffDate > 0 ? (
         <Title isPc={isPc}>{getDateDiff()}일 지남</Title>
       ) : (
-        <Title color={true} isPc={isPc}>
+        <Title color="true" isPc={isPc}>
           {getDateDiff()}일 남음
         </Title>
       )}
@@ -48,7 +48,7 @@ const Container = styled.div`
 const Title = styled.p`
   font-size: 1.25rem;
   font-weight: bold;
-  color: red;
+  color: #dc6356;
 
   ${props =>
     props.color &&

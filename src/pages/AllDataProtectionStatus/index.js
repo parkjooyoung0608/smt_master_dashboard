@@ -29,29 +29,31 @@ const AllDataProtectionStatus = () => {
     query: "(min-width:1240px)",
   });
 
+  const isTablet = useMediaQuery({
+    query: "(min-width:768px) and (max-width:1560px)",
+  });
+
   return (
     <>
       {isPc ? (
-        <BoxContainer>
+        <BoxContainer title="그룹 전체 데이터 보호 현황">
           <Title title="그룹 전체 데이터 보호 현황" />
           <FlexContainer>
-            <Card select="#8195CF">
+            <Card line="none">
               <CardTextBox>
-                <CountNum>{todayProcessData}</CountNum>
+                <CountNum isTablet={isTablet}>{todayProcessData}</CountNum>
                 <Date>일</Date>
               </CardTextBox>
             </Card>
-            <MarginRight />
             <Card>
               <CardTextBox>
-                <CountNum>{weekProcessData}</CountNum>
+                <CountNum isTablet={isTablet}>{weekProcessData}</CountNum>
                 <Date>주</Date>
               </CardTextBox>
             </Card>
-            <MarginRight />
             <Card>
               <CardTextBox>
-                <CountNum>{monthProcessData}</CountNum>
+                <CountNum isTablet={isTablet}>{monthProcessData}</CountNum>
                 <Date>월</Date>
               </CardTextBox>
             </Card>
@@ -61,20 +63,18 @@ const AllDataProtectionStatus = () => {
         <BoxContainer>
           <Title title="그룹 전체 데이터 보호 현황" />
           <FlexContainer>
-            <TabletCard select="#8195CF">
+            <TabletCard>
               <CardTextBox>
                 <CountNum>{todayProcessData}</CountNum>
                 <Date>일</Date>
               </CardTextBox>
             </TabletCard>
-            <MarginRight />
             <TabletCard>
               <CardTextBox>
                 <CountNum>{weekProcessData}</CountNum>
                 <Date>주</Date>
               </CardTextBox>
             </TabletCard>
-            <MarginRight />
             <TabletCard>
               <CardTextBox>
                 <CountNum>{monthProcessData}</CountNum>
@@ -95,22 +95,34 @@ const FlexContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: calc(100% - 1.875rem);
+  margin-right: 1rem;
+  margin-left: -1rem;
 `;
 
 const Card = styled.div`
+  display: flex;
   position: relative;
   width: 33%;
-  height: 70%;
+  height: 60%;
   text-align: center;
   color: #676a72;
-  background-color: #212d4f;
-  border-radius: 0.313rem;
-  ${props =>
-    props.select &&
-    css`
-      color: #ffffff;
-      background-color: #7e94d4;
-    `}
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding-right: -200px;
+    height: 50px;
+    border-right: 3px solid #676a72;
+    vertical-align: middle;
+
+    ${props =>
+      props.line &&
+      css`
+        border: none;
+      `}
+  }
 `;
 
 const CardTextBox = styled.div`
@@ -121,16 +133,18 @@ const CardTextBox = styled.div`
 `;
 
 const CountNum = styled.p`
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   font-weight: bold;
+
+  ${props =>
+    props.isTablet &&
+    css`
+      font-size: 2rem;
+    `}
 `;
 
 const Date = styled.p`
-  font-size: 1rem;
-`;
-
-const MarginRight = styled.div`
-  margin-right: 0.625rem;
+  font-size: 1.3rem;
 `;
 
 const TabletCard = styled.div`
@@ -139,8 +153,6 @@ const TabletCard = styled.div`
   height: 100px;
   text-align: center;
   color: #676a72;
-  background-color: #212d4f;
-  border-radius: 0.313rem;
   cursor: pointer;
   ${props =>
     props.select &&

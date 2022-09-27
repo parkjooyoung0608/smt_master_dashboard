@@ -10,14 +10,14 @@ const GroupWideOperationStatus = () => {
 
       <MarginBottom />
       <FlexBox>
-        <Card bgColor="#5387F8">
-          <h3>접속</h3>
+        <Card bgColor="#4B69D2">
           <Span>4</Span>
+          <P>접속</P>
         </Card>
         <MarginRight />
-        <Card bgColor="#DC6356">
-          <h3>만료</h3>
+        <Card bgColor="#D24B54">
           <Span>1</Span>
+          <P>만료</P>
         </Card>
       </FlexBox>
     </Container>
@@ -29,7 +29,7 @@ export default GroupWideOperationStatus;
 const Container = styled.section`
   flex: 1;
   height: 50%;
-  padding: 0.625rem;
+  padding: 1rem;
   background-color: #fff;
   box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
   border-radius: 0.313rem;
@@ -47,7 +47,7 @@ const Card = styled.div`
   justify-content: center;
   align-items: center;
   width: 50%;
-  padding: 0.625rem;
+  padding: 0.3rem;
   text-align: center;
   color: #fff;
   border-radius: 0.313rem;
@@ -59,11 +59,12 @@ const P = styled.p`
 `;
 
 const Span = styled.span`
+  font-size: 1.5rem;
   font-weight: bold;
 `;
 
 const MarginBottom = styled.div`
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.5rem;
 `;
 const MarginRight = styled.div`
   margin-right: 0.625rem;

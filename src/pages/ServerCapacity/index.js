@@ -1,6 +1,7 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import Title from "../../component/Title";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const ServerCapacity = () => {
   const CAPACITYDATA = {
@@ -11,18 +12,22 @@ const ServerCapacity = () => {
   const CapacityPersent = Math.ceil(
     (CAPACITYDATA.capacityData / CAPACITYDATA.allCapacityData) * 100
   );
+
+  const isTablet = useMediaQuery({
+    query: "(min-width:768px) and (max-width:1240px)",
+  });
+
   return (
-    <Container>
-      <FlexBox>
+    <Container isTablet={isTablet}>
+      <div>
         <Title title="서버 용량" />
         <SubTitle>
           <span>Total : </span>
           <span>{CAPACITYDATA.capacityData}GB / </span>
           <span>{CAPACITYDATA.allCapacityData}GB</span>
         </SubTitle>
-      </FlexBox>
-
-      <ChartSkills>
+      </div>
+      <ChartSkills isTablet={isTablet}>
         <ChartSkillsContent
           percent={"rotateZ(" + 180 / CapacityPersent + "deg)"}
         />
@@ -35,29 +40,33 @@ const ServerCapacity = () => {
 export default ServerCapacity;
 
 const Container = styled.div`
+  position: relative;
   flex: 1;
-  padding: 0.625rem;
+  padding: 1rem;
   background-color: #fff;
   box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
   border-radius: 0.313rem;
   height: calc(50% - 0.625rem);
-`;
 
-const FlexBox = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${props =>
+    props.isTablet &&
+    css`
+      height: 10rem;
+    `}
 `;
 
 const SubTitle = styled.div`
-  font-size: 0.625rem;
+  font-size: 0.65rem;
   color: grey;
 `;
 
 const ChartSkills = styled.ul`
-  position: relative;
-  width: 11.25rem;
-  height: 5.625rem;
-  margin: 0 auto;
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+  width: 12rem;
+  height: 6rem;
+  margin: 1rem auto;
   padding: 0;
   list-style-type: none;
   overflow: hidden;
@@ -66,11 +75,20 @@ const ChartSkills = styled.ul`
     content: "";
     width: inherit;
     height: inherit;
-    border: 2.688rem solid rgba(211, 211, 211, 0.3);
+    border: 2.7rem solid rgba(211, 211, 211, 0.3);
     border-bottom: none;
     border-top-left-radius: 10.938rem;
     border-top-right-radius: 10.938rem;
   }
+
+  ${props =>
+    props.isTablet &&
+    css`
+      position: absolute;
+      top: 50%;
+      left: 18%;
+      transform: translate(-50%, -50%);
+    `}
 `;
 
 const ChartSkillsContent = styled.li`
@@ -85,7 +103,7 @@ const ChartSkillsContent = styled.li`
   border-bottom-right-radius: 10.938rem;
   transform-origin: 50% 0;
   transform: ${props => props.percent};
-  border-color: #717ea4;
+  border-color: #4b69d2;
 `;
 
 const Percent = styled.p`

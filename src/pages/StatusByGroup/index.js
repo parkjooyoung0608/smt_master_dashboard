@@ -57,7 +57,7 @@ export default StatusByGroup;
 const Container = styled.section`
   flex: 1;
   height: ${props => props.getHeight}px;
-  padding: 0.625rem;
+  padding: 1rem;
   border-radius: 0.313rem;
   background-color: #fff;
   box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
@@ -82,7 +82,7 @@ const SelectDateBtn = styled.button`
     css`
       padding: 0.4rem 0;
       color: rgb(25, 25, 25);
-      border-bottom: 2px solid #7e94d4;
+      border-bottom: 0.125rem solid #676a72;
     `}
 `;
 

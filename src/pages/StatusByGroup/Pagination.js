@@ -40,17 +40,18 @@ const Button = styled.button`
   padding: 0.5rem 0.75rem;
   margin: 0;
   background: #fff;
+  font-family: "Courier Prime", monospace;
   color: rgb(25, 25, 25);
   font-size: 1rem;
 
   &:hover {
-    border-bottom: 2px solid #7e94d4;
+    border-bottom: 2px solid rgb(25, 25, 25);
     cursor: pointer;
   }
 
   &[disabled] {
     border: none;
-    color: grey;
+    color: rgb(228, 226, 226);
     cursor: revert;
     transform: revert;
   }
@@ -58,8 +59,7 @@ const Button = styled.button`
   &[aria-current] {
     border: none;
     border-radius: 0.313rem;
-    background: #7e94d4;
-    color: #fff;
+    background: rgb(228, 226, 226);
     font-weight: bold;
     cursor: revert;
     transform: revert;

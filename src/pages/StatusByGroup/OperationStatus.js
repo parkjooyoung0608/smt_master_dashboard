@@ -18,20 +18,20 @@ const OperationStatus = ({
       ) : (
         <FlexBox>
           <div>
-            <Count percent={expiredLicenseCnt}>{expiredLicenseCnt}</Count>
-            <Line color="#1c7fff" />
+            <Count>{expiredLicenseCnt}</Count>
+            <Line />
             <Span>접속</Span>
           </div>
           <MarginRight isTablet={isTablet} />
           <div>
-            <Count percent={connectedClientCnt}>{connectedClientCnt}</Count>
-            <Line color="#f85353" />
+            <Count>{connectedClientCnt}</Count>
+            <Line />
             <Span>만료</Span>
           </div>
           <MarginRight isTablet={isTablet} />
           <div>
-            <Count percent={usedLicenseCnt}>{usedLicenseCnt}</Count>
-            <Line color="#339473" />
+            <Count>{usedLicenseCnt}</Count>
+            <Line />
             <Span>등록</Span>
           </div>
         </FlexBox>
@@ -74,8 +74,6 @@ const FlexBox = styled.div`
 const Line = styled.div`
   width: 3rem;
   margin: 0.5rem 0 0.25rem;
-  border: 0.063rem solid red;
-  border-color: ${props => props.color};
 `;
 
 const P = styled.p`

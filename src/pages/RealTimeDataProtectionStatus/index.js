@@ -38,6 +38,14 @@ const RealTimeDataProtectionStatus = () => {
       clientIp: "192.168.0.20",
       connectIp: "192.168.0.20",
     },
+    {
+      id: 5,
+      group: "박주영",
+      occurrenceTime: "2022-09-29 09:48:04",
+      registrationTime: "2022-09-29 09:50:04",
+      clientIp: "192.168.0.20",
+      connectIp: "192.168.0.20",
+    },
   ];
 
   return (
@@ -84,31 +92,32 @@ export default RealTimeDataProtectionStatus;
 const Table = styled.table`
   width: 100%;
   font-size: 0.9em;
-  box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
   border-collapse: collapse;
-  border-radius: 0.313rem;
   overflow: hidden;
 `;
 
 const Thead = styled.thead`
-  background-color: #8195cf;
-  color: #fff;
+  font-weight: bold;
+  background-color: rgb(228, 226, 226);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 `;
 
 const Tr = styled.tr`
-  padding: 0.625rem 0;
+  padding: 0.5rem 0;
   border-bottom: 0.063rem solid rgba(0, 0, 0, 0.1);
 `;
 
 const Th = styled.th`
-  padding: 0.625rem 0;
+  padding: 0.5rem 1rem;
 `;
 
 const Td = styled.td`
-  padding: 0.625rem 0;
+  font-family: "Courier Prime", monospace;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
   text-align: center;
 `;
 
 const MarginBottom = styled.div`
-  margin-bottom: 0.625rem;
+  margin-bottom: 1rem;
 `;

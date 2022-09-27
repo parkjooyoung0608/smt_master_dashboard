@@ -33,7 +33,7 @@ function App() {
 
   const size = useWindowSize();
   const windowHeightSize = size.height;
-  const getHeight = elementHeight && windowHeightSize - elementHeight - 70;
+  const getHeight = elementHeight && windowHeightSize - elementHeight - 100;
 
   const targetRef = useRef(null);
   const { getElementProperty } = useGetElementProperty(targetRef);
@@ -46,9 +46,11 @@ function App() {
   const isPc = useMediaQuery({
     query: "(min-width:1240px)",
   });
+
   const isTablet = useMediaQuery({
     query: "(min-width:768px) and (max-width:1240px)",
   });
+
   const isMobile = useMediaQuery({
     query: "(max-width:767px)",
   });
@@ -59,6 +61,7 @@ function App() {
         <>
           <GlobalStyle />
           <DashBoardContainer>
+            <H1>대시보드</H1>
             <FlexContainer ref={targetRef}>
               <FirstSection>
                 <GroupWideOperationStatus />
@@ -75,15 +78,18 @@ function App() {
       {isTablet && (
         <>
           <GlobalStyle />
-          <GroupWideOperationStatus />
-          <MarginButton />
-          <ServerCapacity />
-          <MarginButton />
-          <AllDataProtectionStatus />
-          <MarginButton />
-          <RealTimeDataProtectionStatus />
-          <MarginButton />
-          <StatusByGroup />
+          <DashBoardContainer isTablet={isTablet}>
+            <H1>대시보드</H1>
+            <GroupWideOperationStatus />
+            <MarginButton />
+            <ServerCapacity />
+            <MarginButton />
+            <AllDataProtectionStatus />
+            <MarginButton />
+            <RealTimeDataProtectionStatus />
+            <MarginButton />
+            <StatusByGroup />
+          </DashBoardContainer>
         </>
       )}
       {isMobile && (
@@ -108,6 +114,13 @@ const FirstSection = styled.div`
   width: 20%;
 `;
 
+const H1 = styled.h1`
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+`;
+
 const MarginRight = styled.div`
   margin-right: 0.625rem;
 `;
@@ -120,8 +133,10 @@ const MobileContainer = styled.div`
   background-color: #212d4f;
   width: 100vw;
   height: 100vh;
+  margin: 0;
   font-size: 24px;
   font-weight: bold;
+  text-align: center;
   color: #fff;
   display: flex;
   justify-content: center;

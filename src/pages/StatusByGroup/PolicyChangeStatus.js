@@ -11,28 +11,28 @@ const PolicyChangeStatus = () => {
     <Container>
       <FlexBox>
         <DisplayFlex>
-          <Circle color="#111735" isTablet={isTablet} />
+          <Circle color="#484F7C" isTablet={isTablet} />
           <span>데이터 정책</span>
         </DisplayFlex>
         <span>0</span>
       </FlexBox>
       <FlexBox>
         <DisplayFlex>
-          <Circle color="#223781" isTablet={isTablet} />
+          <Circle color="#4A588D" isTablet={isTablet} />
           <span>시스템</span>
         </DisplayFlex>
         <span>0</span>
       </FlexBox>
       <FlexBox>
         <DisplayFlex>
-          <Circle color="#3E5B7D" isTablet={isTablet} />
+          <Circle color="#5C6BB0" isTablet={isTablet} />
           <span>운영환경</span>
         </DisplayFlex>
         <span>0</span>
       </FlexBox>
       <FlexBox>
         <DisplayFlex>
-          <Circle color="#7AADDD" isTablet={isTablet} />
+          <Circle color="#A4A1B6" isTablet={isTablet} />
           <span>계정</span>
         </DisplayFlex>
         <span>0</span>

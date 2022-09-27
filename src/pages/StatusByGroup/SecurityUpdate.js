@@ -45,7 +45,7 @@ const FlexBox = styled.div`
 
 const PcCount = styled.p`
   margin-bottom: 0.625rem;
-  font-size: 1.563rem;
+  font-size: 1.5rem;
   font-weight: bold;
 `;
 

@@ -18,7 +18,7 @@ const IOSSwitch = styled(props => (
       transform: "translateX(1rem)",
       color: "#fff",
       "& + .MuiSwitch-track": {
-        backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#65C466",
+        backgroundColor: theme.palette.mode === "dark" ? "#509A2C" : "#509A2C",
         opacity: 1,
         border: 0,
       },
@@ -27,7 +27,7 @@ const IOSSwitch = styled(props => (
       },
     },
     "&.Mui-focusVisible .MuiSwitch-thumb": {
-      color: "#33cf4d",
+      color: "#7E94D4",
       border: "0.375rem solid #fff",
     },
     "&.Mui-disabled .MuiSwitch-thumb": {
@@ -58,11 +58,6 @@ const IOSSwitch = styled(props => (
 export default function CustomizedSwitches({ isActive }) {
   return (
     <FormGroup>
-      {/* TODO : 클릭시 isActive의 상태 Toggle 로직 구현 : POST로 상태 넘겨줘야 가능 */}
-      {/* <FormControlLabel
-        style={{ margin: 0 }}
-        control={<IOSSwitch sx={{ m: 1 }} checked={isActive === "Y" && true} />}
-      /> */}
       <FormControlLabel
         style={{ margin: 0 }}
         control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
