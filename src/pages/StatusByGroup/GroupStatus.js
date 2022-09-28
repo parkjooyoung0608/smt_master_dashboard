@@ -9,7 +9,7 @@ import Pagination from "./Pagination";
 import CustomizedSwitches from "../../component/onOffBtn";
 import styled, { css } from "styled-components";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
 const GroupStatus = ({ changeDate }) => {
   const [allGroupData, setAllGroupData] = useState("");
@@ -18,6 +18,7 @@ const GroupStatus = ({ changeDate }) => {
   const [page, setPage] = useState(1);
   const [pageShow, setPageShow] = useState(10);
   const [toggle, setToggle] = useState(false);
+  const [arrowBtn, setArrowBtn] = useState(false);
   const offset = (page - 1) * limit;
 
   useEffect(() => {
@@ -64,6 +65,63 @@ const GroupStatus = ({ changeDate }) => {
     query: "(min-width:768px) and (max-width:1240px)",
   });
 
+  const onSortGroupName = () => {
+    allGroupData &&
+      allGroupData.sort((a, b) => {
+        if (a < b) return -1;
+        if (a > b) return 1;
+        if (a === b) return 0;
+        else return -1;
+      });
+    setAllGroupData([...allGroupData]);
+    setArrowBtn(!arrowBtn);
+  };
+
+  const onSortOperateDate = () => {
+    allGroupData &&
+      allGroupData.sort(
+        (a, b) => new Date(a.operateEndDate) - new Date(b.operateEndDate)
+      );
+    setAllGroupData([...allGroupData]);
+  };
+
+  const onSortOperationStatus = () => {
+    allGroupData &&
+      allGroupData.sort((a, b) => b.usedLicenseCnt - a.usedLicenseCnt);
+    setAllGroupData([...allGroupData]);
+  };
+
+  const onSortUpdateCnt = () => {
+    allGroupData &&
+      allGroupData.sort((a, b) => {
+        return b.noVerifiedSecUpdateCnt - a.noVerifiedSecUpdateCnt;
+      });
+    setAllGroupData([...allGroupData]);
+  };
+
+  const onSortProtectLogCnt = () => {
+    allGroupData &&
+      allGroupData.sort((a, b) => {
+        return (
+          b.fileProtectLogCnt.accessBlockCnt -
+          a.fileProtectLogCnt.accessBlockCnt
+        );
+      });
+    setAllGroupData([...allGroupData]);
+  };
+
+  const onSortActive = () => {
+    allGroupData &&
+      allGroupData.sort((a, b) => {
+        const x = a.isActive.toLowerCase();
+        const y = b.isActive.toLowerCase();
+        if (x < y) return -1;
+        if (x > y) return 1;
+        return 0;
+      });
+    setAllGroupData([...allGroupData]);
+  };
+
   return (
     <Container>
       <FlexBox>
@@ -72,7 +130,7 @@ const GroupStatus = ({ changeDate }) => {
         </p>
         <Label>
           <SelectContainer>
-            <SelectTitle onToggle={toggle} onClick={onShowDropbox}>
+            <SelectTitle toggle={toggle === true} onClick={onShowDropbox}>
               <SelectNum>{pageShow}</SelectNum>
               {toggle ? (
                 <IoMdArrowDropup color="#a8a8a8" />
@@ -81,20 +139,22 @@ const GroupStatus = ({ changeDate }) => {
               )}
             </SelectTitle>
             <Title>개씩 보기</Title>
-            <SelectNums onToggle={toggle}>
-              <Option onClick={option} value="10">
-                10
-              </Option>
-              <Option onClick={option} value="20">
-                20
-              </Option>
-              <Option onClick={option} value="50">
-                50
-              </Option>
-              <Option onClick={option} value="100">
-                100
-              </Option>
-            </SelectNums>
+            {toggle ? (
+              <SelectNums>
+                <Option onClick={option} value="10">
+                  10
+                </Option>
+                <Option onClick={option} value="20">
+                  20
+                </Option>
+                <Option onClick={option} value="50">
+                  50
+                </Option>
+                <Option onClick={option} value="100">
+                  100
+                </Option>
+              </SelectNums>
+            ) : null}
           </SelectContainer>
         </Label>
       </FlexBox>
@@ -114,19 +174,35 @@ const GroupStatus = ({ changeDate }) => {
             <Th>
               <Title>
                 그룹
-                <MdKeyboardArrowDown className="arrow" />
+                {arrowBtn ? (
+                  <MdKeyboardArrowUp
+                    className="arrow"
+                    onClick={onSortGroupName}
+                  />
+                ) : (
+                  <MdKeyboardArrowDown
+                    className="arrow"
+                    onClick={onSortGroupName}
+                  />
+                )}
               </Title>
             </Th>
             <Th>
               <Title>
                 유효 기간
-                <MdKeyboardArrowDown className="arrow" />
+                <MdKeyboardArrowDown
+                  className="arrow"
+                  onClick={onSortOperateDate}
+                />
               </Title>
             </Th>
             <Th>
               <Title>
                 그룹별 운용 현황
-                <MdKeyboardArrowDown className="arrow" />
+                <MdKeyboardArrowDown
+                  className="arrow"
+                  onClick={onSortOperationStatus}
+                />
               </Title>
             </Th>
             <Th>
@@ -138,19 +214,29 @@ const GroupStatus = ({ changeDate }) => {
             <Th>
               <Title>
                 보안 업데이트
-                <MdKeyboardArrowDown className="arrow" />
+                <MdKeyboardArrowDown
+                  className="arrow"
+                  onClick={onSortUpdateCnt}
+                />
               </Title>
             </Th>
             <Th>
               <Title>
                 그룹별 데이터 보호
-                <MdKeyboardArrowDown className="arrow" />
+                <MdKeyboardArrowDown
+                  className="arrow"
+                  onClick={onSortProtectLogCnt}
+                />
               </Title>
             </Th>
             <Th>
               <Title>
                 상태
-                <MdKeyboardArrowDown className="arrow" />
+                <MdKeyboardArrowDown
+                  className="arrow"
+                  onClick={onSortActive}
+                  isactive={allGroupData.isActive}
+                />
               </Title>
             </Th>
           </Tr>
@@ -307,7 +393,7 @@ const SelectTitle = styled.span`
   background-color: #ffffff;
   border-radius: 0.313rem;
   ${props =>
-    props.onToggle &&
+    props.toggle &&
     css`
       border-color: #7e94d4;
     `}
@@ -316,7 +402,6 @@ const SelectTitle = styled.span`
 const SelectNum = styled.div``;
 
 const SelectNums = styled.ul`
-  display: none;
   position: absolute;
   top: 2.188rem;
   left: -0.625rem;
@@ -327,11 +412,6 @@ const SelectNums = styled.ul`
   background-color: #fff;
   box-shadow: 0 0.063rem 0.188rem rgba(0, 0, 0, 0.15);
   z-index: 100;
-  ${props =>
-    props.onToggle &&
-    css`
-      display: block;
-    `}
 `;
 
 const Option = styled.li`

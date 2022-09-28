@@ -60,7 +60,7 @@ export default function CustomizedSwitches({ isActive }) {
     <FormGroup>
       <FormControlLabel
         style={{ margin: 0 }}
-        control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+        control={<IOSSwitch sx={{ m: 1 }} checked={isActive === "Y" && true} />}
       />
     </FormGroup>
   );
