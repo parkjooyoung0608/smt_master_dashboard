@@ -62,7 +62,7 @@ const SubTitle = styled.div`
 
 const ChartSkills = styled.ul`
   position: absolute;
-  top: 1.5rem;
+  top: 1rem;
   right: 1rem;
   width: 12rem;
   height: 6rem;
@@ -77,8 +77,8 @@ const ChartSkills = styled.ul`
     height: inherit;
     border: 2.7rem solid rgba(211, 211, 211, 0.3);
     border-bottom: none;
-    border-top-left-radius: 10.938rem;
-    border-top-right-radius: 10.938rem;
+    border-top-left-radius: 11rem;
+    border-top-right-radius: 11rem;
   }
 
   ${props =>
