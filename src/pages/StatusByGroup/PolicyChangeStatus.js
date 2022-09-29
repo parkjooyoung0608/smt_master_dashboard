@@ -2,7 +2,12 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import styled, { css } from "styled-components";
 
-const PolicyChangeStatus = () => {
+const PolicyChangeStatus = ({
+  policyDataLogCnt,
+  serverStatusLogCnt,
+  policyOperationEnvLogCnt,
+  accountLogCnt,
+}) => {
   const isTablet = useMediaQuery({
     query: "(min-width:768px) and (max-width:1240px)",
   });
@@ -14,28 +19,28 @@ const PolicyChangeStatus = () => {
           <Circle color="#484F7C" isTablet={isTablet} />
           <span>데이터 정책</span>
         </DisplayFlex>
-        <span>0</span>
+        <span>{policyDataLogCnt}</span>
       </FlexBox>
       <FlexBox>
         <DisplayFlex>
           <Circle color="#4A588D" isTablet={isTablet} />
           <span>시스템</span>
         </DisplayFlex>
-        <span>0</span>
+        <span>{serverStatusLogCnt}</span>
       </FlexBox>
       <FlexBox>
         <DisplayFlex>
           <Circle color="#5C6BB0" isTablet={isTablet} />
           <span>운영환경</span>
         </DisplayFlex>
-        <span>0</span>
+        <span>{policyOperationEnvLogCnt}</span>
       </FlexBox>
       <FlexBox>
         <DisplayFlex>
           <Circle color="#A4A1B6" isTablet={isTablet} />
           <span>계정</span>
         </DisplayFlex>
-        <span>0</span>
+        <span>{accountLogCnt}</span>
       </FlexBox>
     </Container>
   );

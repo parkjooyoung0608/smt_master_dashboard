@@ -6,7 +6,7 @@ import PolicyChangeStatus from "./PolicyChangeStatus";
 import ProtectionStatusGroup from "./ProtectionStatusGroup";
 import SecurityUpdate from "./SecurityUpdate";
 import Pagination from "./Pagination";
-import CustomizedSwitches from "../../component/onOffBtn";
+import CustomizedSwitches from "../../component/OnOffBtn";
 import styled, { css } from "styled-components";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
@@ -19,6 +19,13 @@ const GroupStatus = ({ changeDate }) => {
   const [pageShow, setPageShow] = useState(10);
   const [toggle, setToggle] = useState(false);
   const [arrowBtn, setArrowBtn] = useState(false);
+  const [sortOperateToggle, setSortOperateToggle] = useState(false);
+  const [sortUpdateToggle, setSortUpdateToggle] = useState(false);
+  const [sortOperationStatusToggle, setSortOperationStatusToggle] =
+    useState(false);
+  const [sortProtectLogToggle, setSortProtectLogToggle] = useState(false);
+  const [sortActiveToggle, setSortActiveToggle] = useState(false);
+
   const offset = (page - 1) * limit;
 
   useEffect(() => {
@@ -78,47 +85,133 @@ const GroupStatus = ({ changeDate }) => {
   };
 
   const onSortOperateDate = () => {
-    allGroupData &&
-      allGroupData.sort(
-        (a, b) => new Date(a.operateEndDate) - new Date(b.operateEndDate)
-      );
+    setSortOperateToggle(!sortOperateToggle);
+    if (sortOperateToggle === false) {
+      allGroupData &&
+        allGroupData.sort(
+          (a, b) => new Date(a.operateEndDate) - new Date(b.operateEndDate)
+        );
+    } else {
+      allGroupData &&
+        allGroupData.sort(
+          (a, b) => new Date(b.operateEndDate) - new Date(a.operateEndDate)
+        );
+    }
     setAllGroupData([...allGroupData]);
   };
 
   const onSortOperationStatus = () => {
-    allGroupData &&
-      allGroupData.sort((a, b) => b.usedLicenseCnt - a.usedLicenseCnt);
+    setSortOperationStatusToggle(!sortOperationStatusToggle);
+    if (sortOperationStatusToggle === false) {
+      allGroupData &&
+        allGroupData.sort((a, b) => b.usedLicenseCnt - a.usedLicenseCnt);
+    } else {
+      allGroupData &&
+        allGroupData.sort((a, b) => a.usedLicenseCnt - b.usedLicenseCnt);
+    }
+    setAllGroupData([...allGroupData]);
+  };
+
+  const [sortPolicyChange, setSortPolicyChange] = useState(false);
+  const onSortPolicyChangeStatus = () => {
+    setSortPolicyChange(!sortPolicyChange);
+    if (sortPolicyChange === false) {
+      allGroupData &&
+        allGroupData.sort((a, b) => {
+          const x =
+            a.policyDataLogCnt +
+            a.serverStatusLogCnt +
+            a.policyOperationEnvLogCnt +
+            a.accountLogCnt;
+          const y =
+            b.policyDataLogCnt +
+            b.serverStatusLogCnt +
+            b.policyOperationEnvLogCnt +
+            b.accountLogCnt;
+          if (x < y) return 1;
+          if (x > y) return -1;
+          return 0;
+        });
+    } else {
+      allGroupData &&
+        allGroupData.sort((a, b) => {
+          const x =
+            a.policyDataLogCnt +
+            a.serverStatusLogCnt +
+            a.policyOperationEnvLogCnt +
+            a.accountLogCnt;
+          const y =
+            b.policyDataLogCnt +
+            b.serverStatusLogCnt +
+            b.policyOperationEnvLogCnt +
+            b.accountLogCnt;
+          if (x < y) return -1;
+          if (x > y) return 1;
+          return 0;
+        });
+    }
     setAllGroupData([...allGroupData]);
   };
 
   const onSortUpdateCnt = () => {
-    allGroupData &&
-      allGroupData.sort((a, b) => {
-        return b.noVerifiedSecUpdateCnt - a.noVerifiedSecUpdateCnt;
-      });
+    setSortUpdateToggle(!sortUpdateToggle);
+    if (sortUpdateToggle === false) {
+      allGroupData &&
+        allGroupData.sort((a, b) => {
+          return b.noVerifiedSecUpdateCnt - a.noVerifiedSecUpdateCnt;
+        });
+    } else {
+      allGroupData &&
+        allGroupData.sort((a, b) => {
+          return a.noVerifiedSecUpdateCnt - b.noVerifiedSecUpdateCnt;
+        });
+    }
     setAllGroupData([...allGroupData]);
   };
 
   const onSortProtectLogCnt = () => {
-    allGroupData &&
-      allGroupData.sort((a, b) => {
-        return (
-          b.fileProtectLogCnt.accessBlockCnt -
-          a.fileProtectLogCnt.accessBlockCnt
-        );
-      });
+    setSortProtectLogToggle(!sortProtectLogToggle);
+    if (sortProtectLogToggle === false) {
+      allGroupData &&
+        allGroupData.sort((a, b) => {
+          return (
+            b.fileProtectLogCnt.accessBlockCnt -
+            a.fileProtectLogCnt.accessBlockCnt
+          );
+        });
+    } else {
+      allGroupData &&
+        allGroupData.sort((a, b) => {
+          return (
+            a.fileProtectLogCnt.accessBlockCnt -
+            b.fileProtectLogCnt.accessBlockCnt
+          );
+        });
+    }
     setAllGroupData([...allGroupData]);
   };
 
   const onSortActive = () => {
-    allGroupData &&
-      allGroupData.sort((a, b) => {
-        const x = a.isActive.toLowerCase();
-        const y = b.isActive.toLowerCase();
-        if (x < y) return -1;
-        if (x > y) return 1;
-        return 0;
-      });
+    setSortActiveToggle(!sortActiveToggle);
+    if (sortActiveToggle === false) {
+      allGroupData &&
+        allGroupData.sort((a, b) => {
+          const x = a.isActive.toLowerCase();
+          const y = b.isActive.toLowerCase();
+          if (x < y) return -1;
+          if (x > y) return 1;
+          return 0;
+        });
+    } else {
+      allGroupData &&
+        allGroupData.sort((a, b) => {
+          const x = a.isActive.toLowerCase();
+          const y = b.isActive.toLowerCase();
+          if (x < y) return 1;
+          if (x > y) return -1;
+          return 0;
+        });
+    }
     setAllGroupData([...allGroupData]);
   };
 
@@ -190,53 +283,87 @@ const GroupStatus = ({ changeDate }) => {
             <Th>
               <Title>
                 유효 기간
-                <MdKeyboardArrowDown
-                  className="arrow"
-                  onClick={onSortOperateDate}
-                />
+                {sortOperateToggle ? (
+                  <MdKeyboardArrowUp
+                    className="arrow"
+                    onClick={onSortOperateDate}
+                  />
+                ) : (
+                  <MdKeyboardArrowDown
+                    className="arrow"
+                    onClick={onSortOperateDate}
+                  />
+                )}
               </Title>
             </Th>
             <Th>
               <Title>
                 그룹별 운용 현황
-                <MdKeyboardArrowDown
-                  className="arrow"
-                  onClick={onSortOperationStatus}
-                />
+                {sortOperationStatusToggle ? (
+                  <MdKeyboardArrowUp
+                    className="arrow"
+                    onClick={onSortOperationStatus}
+                  />
+                ) : (
+                  <MdKeyboardArrowDown
+                    className="arrow"
+                    onClick={onSortOperationStatus}
+                  />
+                )}
               </Title>
             </Th>
             <Th>
               <Title>
                 정책 변경 현황
-                <MdKeyboardArrowDown className="arrow" />
+                <MdKeyboardArrowDown
+                  className="arrow"
+                  onClick={onSortPolicyChangeStatus}
+                />
               </Title>
             </Th>
             <Th>
               <Title>
                 보안 업데이트
-                <MdKeyboardArrowDown
-                  className="arrow"
-                  onClick={onSortUpdateCnt}
-                />
+                {sortUpdateToggle ? (
+                  <MdKeyboardArrowUp
+                    className="arrow"
+                    onClick={onSortUpdateCnt}
+                  />
+                ) : (
+                  <MdKeyboardArrowDown
+                    className="arrow"
+                    onClick={onSortUpdateCnt}
+                  />
+                )}
               </Title>
             </Th>
             <Th>
               <Title>
                 그룹별 데이터 보호
-                <MdKeyboardArrowDown
-                  className="arrow"
-                  onClick={onSortProtectLogCnt}
-                />
+                {sortProtectLogToggle ? (
+                  <MdKeyboardArrowUp
+                    className="arrow"
+                    onClick={onSortProtectLogCnt}
+                  />
+                ) : (
+                  <MdKeyboardArrowDown
+                    className="arrow"
+                    onClick={onSortProtectLogCnt}
+                  />
+                )}
               </Title>
             </Th>
             <Th>
               <Title>
                 상태
-                <MdKeyboardArrowDown
-                  className="arrow"
-                  onClick={onSortActive}
-                  isactive={allGroupData.isActive}
-                />
+                {sortActiveToggle ? (
+                  <MdKeyboardArrowUp className="arrow" onClick={onSortActive} />
+                ) : (
+                  <MdKeyboardArrowDown
+                    className="arrow"
+                    onClick={onSortActive}
+                  />
+                )}
               </Title>
             </Th>
           </Tr>
@@ -259,7 +386,12 @@ const GroupStatus = ({ changeDate }) => {
                   />
                 </Td>
                 <Td>
-                  <PolicyChangeStatus />
+                  <PolicyChangeStatus
+                    policyDataLogCnt={props.policyDataLogCnt}
+                    serverStatusLogCnt={props.serverStatusLogCnt}
+                    policyOperationEnvLogCnt={props.policyOperationEnvLogCnt}
+                    accountLogCnt={props.accountLogCnt}
+                  />
                 </Td>
                 <Td>
                   <SecurityUpdate
