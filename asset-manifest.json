@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "//parkjooyoung0608.github.io/smt_master_dashboard/static/css/main.a4b2743f.css",
+    "main.js": "//parkjooyoung0608.github.io/smt_master_dashboard/static/js/main.1e549413.js",
+    "index.html": "//parkjooyoung0608.github.io/smt_master_dashboard/index.html",
+    "main.a4b2743f.css.map": "//parkjooyoung0608.github.io/smt_master_dashboard/static/css/main.a4b2743f.css.map",
+    "main.1e549413.js.map": "//parkjooyoung0608.github.io/smt_master_dashboard/static/js/main.1e549413.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a4b2743f.css",
+    "static/js/main.1e549413.js"
+  ]
+}
