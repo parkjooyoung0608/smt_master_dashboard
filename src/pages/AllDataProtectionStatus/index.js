@@ -7,15 +7,15 @@ import styled, { css } from "styled-components";
 const AllDataProtectionStatus = () => {
   const [blockedData, setBlockedData] = useState();
 
-  // useEffect(() => {
-  //   fetch("/ds_api/dashboard/statis/total/block-proc/all-group", {
-  //     method: "POST",
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setBlockedData(data.data);
-  //     });
-  // }, [setBlockedData]);
+  useEffect(() => {
+    fetch("/ds_api/dashboard/statis/total/block-proc/all-group", {
+      method: "POST",
+    })
+      .then(res => res.json())
+      .then(data => {
+        setBlockedData(data.data);
+      });
+  }, [setBlockedData]);
 
   const todayProcessData =
     blockedData && blockedData[0].processBlockAllCnt.toLocaleString("en-US");
@@ -40,20 +40,22 @@ const AllDataProtectionStatus = () => {
           <FlexContainer>
             <Card line="none">
               <CardTextBox>
-                {/* <CountNum isTablet={isTablet}>{todayProcessData}</CountNum> */}
-                <CountNum isTablet={isTablet}>0</CountNum>
+                <CountNum isTablet={isTablet}>{todayProcessData}</CountNum>
+                {/* <CountNum isTablet={isTablet}>0</CountNum> */}
                 <Date>일</Date>
               </CardTextBox>
             </Card>
             <Card>
               <CardTextBox>
-                <CountNum isTablet={isTablet}>35</CountNum>
+                <CountNum isTablet={isTablet}>{weekProcessData}</CountNum>
+                {/* <CountNum isTablet={isTablet}>35</CountNum> */}
                 <Date>주</Date>
               </CardTextBox>
             </Card>
             <Card>
               <CardTextBox>
-                <CountNum isTablet={isTablet}>14,350</CountNum>
+                <CountNum isTablet={isTablet}>{monthProcessData}</CountNum>
+                {/* <CountNum isTablet={isTablet}>14,350</CountNum> */}
                 <Date>월</Date>
               </CardTextBox>
             </Card>
