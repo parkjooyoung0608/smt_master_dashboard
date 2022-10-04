@@ -40,22 +40,19 @@ const AllDataProtectionStatus = () => {
           <FlexContainer>
             <Card line="none">
               <CardTextBox>
-                <CountNum isTablet={isTablet}>{todayProcessData}</CountNum>
-                {/* <CountNum isTablet={isTablet}>0</CountNum> */}
+                <CountNum>{todayProcessData}</CountNum>
                 <Date>일</Date>
               </CardTextBox>
             </Card>
             <Card>
               <CardTextBox>
-                <CountNum isTablet={isTablet}>{weekProcessData}</CountNum>
-                {/* <CountNum isTablet={isTablet}>35</CountNum> */}
+                <CountNum>{weekProcessData}</CountNum>
                 <Date>주</Date>
               </CardTextBox>
             </Card>
             <Card>
               <CardTextBox>
-                <CountNum isTablet={isTablet}>{monthProcessData}</CountNum>
-                {/* <CountNum isTablet={isTablet}>14,350</CountNum> */}
+                <CountNum>{monthProcessData}</CountNum>
                 <Date>월</Date>
               </CardTextBox>
             </Card>
