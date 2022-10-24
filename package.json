@@ -49,10 +49,14 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
+    "babel-loader": "^8.2.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gh-pages": "^4.0.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "webpack-cli": "^4.10.0"
   },
   "homepage": "http://parkjooyoung0608.github.io/smt_master_dashboard/"
 }
