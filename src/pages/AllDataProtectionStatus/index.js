@@ -6,7 +6,6 @@ import styled, { css } from "styled-components";
 
 const AllDataProtectionStatus = () => {
   const [blockedData, setBlockedData] = useState();
-
   useEffect(() => {
     fetch("/ds_api/dashboard/statis/total/block-proc/all-group", {
       method: "POST",
@@ -28,9 +27,9 @@ const AllDataProtectionStatus = () => {
     query: "(min-width:1240px)",
   });
 
-  const isTablet = useMediaQuery({
-    query: "(min-width:768px) and (max-width:1560px)",
-  });
+  // const isTablet = useMediaQuery({
+  //   query: "(min-width:768px) and (max-width:1560px)",
+  // });
 
   return (
     <>

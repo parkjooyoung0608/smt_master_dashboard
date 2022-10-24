@@ -30,7 +30,12 @@ const GroupStatus = ({ changeDate }) => {
 
   useEffect(() => {
     if (changeDate === "0") {
-      fetch("data/allGroup.json", { method: "GET" })
+      fetch("data/allGroup.json", {
+        headers: {
+          Accept: "application / json",
+        },
+        method: "GET",
+      })
         .then(res => res.json())
         .then(data => {
           setAllGroupData(data.data.searchedList);
@@ -38,7 +43,12 @@ const GroupStatus = ({ changeDate }) => {
         });
     }
     if (changeDate === "1") {
-      fetch("data/allGroupWeek.json", { method: "GET" })
+      fetch("data/allGroupWeek.json", {
+        headers: {
+          Accept: "application / json",
+        },
+        method: "GET",
+      })
         .then(res => res.json())
         .then(data => {
           setAllGroupData(data.data.searchedList);
@@ -46,7 +56,12 @@ const GroupStatus = ({ changeDate }) => {
         });
     }
     if (changeDate === "2") {
-      fetch("data/allGroupMonth.json", { method: "GET" })
+      fetch("data/allGroupMonth.json", {
+        headers: {
+          Accept: "application / json",
+        },
+        method: "GET",
+      })
         .then(res => res.json())
         .then(data => {
           setAllGroupData(data.data.searchedList);

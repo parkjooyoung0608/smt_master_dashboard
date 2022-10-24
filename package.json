@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "http-proxy-middleware": "^2.0.6",
     "material-ui-form": "^1.0.0-alpha.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -53,6 +54,5 @@
     "gh-pages": "^4.0.0",
     "prettier": "^2.7.1"
   },
-  "proxy": "http://192.168.0.75:8080/",
   "homepage": "http://parkjooyoung0608.github.io/smt_master_dashboard/"
 }
