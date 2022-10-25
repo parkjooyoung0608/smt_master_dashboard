@@ -28,47 +28,47 @@ const GroupStatus = ({ changeDate }) => {
 
   const offset = (page - 1) * limit;
 
-  useEffect(() => {
-    if (changeDate === "0") {
-      fetch("data/allGroup.json", {
-        headers: {
-          Accept: "application / json",
-        },
-        method: "GET",
-      })
-        .then(res => res.json())
-        .then(data => {
-          setAllGroupData(data.data.searchedList);
-          setTotalGroup(data.data.total);
-        });
-    }
-    if (changeDate === "1") {
-      fetch("data/allGroupWeek.json", {
-        headers: {
-          Accept: "application / json",
-        },
-        method: "GET",
-      })
-        .then(res => res.json())
-        .then(data => {
-          setAllGroupData(data.data.searchedList);
-          setTotalGroup(data.data.total);
-        });
-    }
-    if (changeDate === "2") {
-      fetch("data/allGroupMonth.json", {
-        headers: {
-          Accept: "application / json",
-        },
-        method: "GET",
-      })
-        .then(res => res.json())
-        .then(data => {
-          setAllGroupData(data.data.searchedList);
-          setTotalGroup(data.data.total);
-        });
-    }
-  }, [changeDate]);
+  // useEffect(() => {
+  //   if (changeDate === "0") {
+  //     fetch("data/allGroup.json", {
+  //       headers: {
+  //         Accept: "application / json",
+  //       },
+  //       method: "GET",
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         setAllGroupData(data.data.searchedList);
+  //         setTotalGroup(data.data.total);
+  //       });
+  //   }
+  //   if (changeDate === "1") {
+  //     fetch("data/allGroupWeek.json", {
+  //       headers: {
+  //         Accept: "application / json",
+  //       },
+  //       method: "GET",
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         setAllGroupData(data.data.searchedList);
+  //         setTotalGroup(data.data.total);
+  //       });
+  //   }
+  //   if (changeDate === "2") {
+  //     fetch("data/allGroupMonth.json", {
+  //       headers: {
+  //         Accept: "application / json",
+  //       },
+  //       method: "GET",
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         setAllGroupData(data.data.searchedList);
+  //         setTotalGroup(data.data.total);
+  //       });
+  //   }
+  // }, [changeDate]);
 
   const option = e => {
     setPageShow(e.target.value);
