@@ -26,9 +26,7 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build": "webpack --mode production",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "build": "webpack --mode production"
   },
   "eslintConfig": {
     "extends": [
@@ -54,7 +52,6 @@
     "babel-loader": "^8.2.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "gh-pages": "^4.0.0",
     "prettier": "^2.7.1",
     "webpack-cli": "^4.10.0"
   },
