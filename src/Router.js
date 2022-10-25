@@ -6,7 +6,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/smt_master_dashboard" element={<App />} />
+        <Route path="/" element={<App />} />
       </Routes>
     </BrowserRouter>
   );
