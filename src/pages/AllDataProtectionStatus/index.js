@@ -6,8 +6,8 @@ import styled, { css } from "styled-components";
 
 const AllDataProtectionStatus = () => {
   const [blockedData, setBlockedData] = useState();
+  const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
   useEffect(() => {
-    const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
     fetch(`${PROXY}/ds_api/dashboard/statis/total/block-proc/all-group`, {
       method: "POST",
     })
