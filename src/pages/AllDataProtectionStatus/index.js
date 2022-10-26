@@ -10,7 +10,7 @@ const AllDataProtectionStatus = () => {
   const URL = `${PROXY}/ds_api/dashboard/statis/total/block-proc/all-group`;
 
   useEffect(() => {
-    fetch(URL, {
+    fetch("/ds_api/dashboard/statis/total/block-proc/all-group", {
       method: "POST",
     })
       .then(res => res.json())
