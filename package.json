@@ -60,5 +60,5 @@
     "prettier": "^2.7.1",
     "webpack-cli": "^4.10.0"
   },
-  "homepage": "http://parkjooyoung0608.github.io/smt_master_dashboard/"
+  "homepage": "."
 }
