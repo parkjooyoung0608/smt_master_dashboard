@@ -7,8 +7,10 @@ import styled, { css } from "styled-components";
 const AllDataProtectionStatus = () => {
   const [blockedData, setBlockedData] = useState();
   const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
+  const URL = `${PROXY}/ds_api/dashboard/statis/total/block-proc/all-group`;
+
   useEffect(() => {
-    fetch(`${PROXY}/ds_api/dashboard/statis/total/block-proc/all-group`, {
+    fetch(URL, {
       method: "POST",
     })
       .then(res => res.json())
