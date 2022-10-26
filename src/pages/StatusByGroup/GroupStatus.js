@@ -6,7 +6,7 @@ import PolicyChangeStatus from "./PolicyChangeStatus";
 import ProtectionStatusGroup from "./ProtectionStatusGroup";
 import SecurityUpdate from "./SecurityUpdate";
 import Pagination from "./Pagination";
-import CustomizedSwitches from "../../component/OnOffBtn";
+// import CustomizedSwitches from "../../component/OnOffBtn";
 import styled, { css } from "styled-components";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
@@ -423,7 +423,7 @@ const GroupStatus = ({ changeDate }) => {
                 </Td>
                 <Td>
                   <SituationIcon>
-                    <CustomizedSwitches isActive={props.isActive} />
+                    {/* <CustomizedSwitches isActive={props.isActive} /> */}
                   </SituationIcon>
                 </Td>
               </Tr>
