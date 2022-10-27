@@ -8,7 +8,7 @@ const AllDataProtectionStatus = () => {
   const [blockedData, setBlockedData] = useState();
 
   useEffect(() => {
-    fetch("https://192.168.0.75/ds_api/dashboard/statis/count/week/memo", {
+    fetch("http://192.168.0.75/ds_api/dashboard/statis/count/week/memo", {
       method: "GET",
     })
       .then(res => res.json())
