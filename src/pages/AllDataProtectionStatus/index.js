@@ -9,7 +9,7 @@ const AllDataProtectionStatus = () => {
 
   useEffect(() => {
     fetch(
-      "https://192.168.0.75:8080/ds_api/dashboard/statis/total/block-proc/all-group",
+      "https://192.168.0.75/ds_api/dashboard/statis/total/block-proc/all-group",
       {
         method: "POST",
       }
