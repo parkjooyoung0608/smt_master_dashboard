@@ -23,4 +23,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
+  devServer: {
+    proxy: { "/api": "http://192.168.0.75:8080/" },
+  },
 };
