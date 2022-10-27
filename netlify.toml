@@ -3,3 +3,13 @@
   to = "https://192.168.0.75:8080/:splat"
   status = 200
   force = true
+  headers = {X-From = "Netlify"}
+
+  [[headers]]
+  for = "/*"
+  [headers.values]
+  cache-control = '''
+  max-age=0,
+  no-cache,
+  no-store,
+  must-revalidate'''
