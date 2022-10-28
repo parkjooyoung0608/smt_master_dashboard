@@ -8,9 +8,12 @@ const AllDataProtectionStatus = () => {
   const [blockedData, setBlockedData] = useState();
 
   useEffect(() => {
-    fetch("/ds_api/dashboard/statis/total/block-proc/all-group", {
-      method: "POST",
-    })
+    fetch(
+      "https://192.168.0.75/ds_api/dashboard/statis/total/block-proc/all-group",
+      {
+        method: "POST",
+      }
+    )
       .then(res => res.json())
       .then(data => {
         console.log(data);
