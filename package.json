@@ -59,6 +59,5 @@
     "gh-pages": "^4.0.0",
     "prettier": "^2.7.1",
     "webpack-cli": "^4.10.0"
-  },
-  "homepage": "."
+  }
 }
